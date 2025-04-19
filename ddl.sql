@@ -8,13 +8,23 @@ Feedback
 Payment / Billing
 */
 
-drop if exists user_authentication;
-drop if exists user;
+drop table if exists user_authentication;
+drop table if exists user;
 
-drop if exists employee_details;
-drop if exists employee;
+drop table if exists employee_details;
+drop table if exists employee;
 
-drop if exists hotel;
+drop table if exists overnight_room_reservation;
+drop table if exists meeting_room_reservation;
+
+drop table if exists overnight_room;
+drop table if exists meeting_room;
+drop table if exists hotel;
+
+drop table if exists food_order;
+drop table if exists payment;
+drop table if exists feedback;
+drop table if exists reservation;
 
 create table user (
     user_id serial primary key,
@@ -23,20 +33,21 @@ create table user (
     last_name varchar(50) not null,
     email varchar(100) unique not null,
     phone_number varchar(20) unique,
-    created_at datetime
+    created_at timestamp default NOW()
 );
 
  -- the same table cannot be used for both users and employees. maybe we should ask Saro whether having this as a separate table for clarity is a good idea
 create table user_authentication (
     user_id int primary key references user(user_id),
     password_hash text not null,
-    password_last_updated datetime not null,
+    password_last_updated timestamp not null,
     totp_secret text,
     security_question text,
     security_question_hash text
 );
 
-drop type if exists employee_role as enum('branch_manager', 'cleaner', 'support_agent', 'front_desk_agent', 'lobby_attendant', 'security_guard');
+drop type if exists employee_role;
+create type employee_role as enum('branch_manager', 'cleaner', 'support_agent', 'front_desk_agent', 'lobby_attendant', 'security_guard');
 
 create table employee (
     employee_id serial primary key,
@@ -57,7 +68,6 @@ create table employee_details (
     hotel_id references hotel(hotel_id)
 );
 
-
 drop type if exists address;
 
 create type address as (
@@ -67,7 +77,7 @@ create type address as (
 );
 
 
-create table hotel ( -- same as hotel I guess
+create table hotel ( -- same as branch I guess
     hotel_id serial primary key,
     name varchar(100) not null unique,
     hotel_address address,
@@ -76,3 +86,91 @@ create table hotel ( -- same as hotel I guess
     branch_manager_id int references employee(employee_details)
 );
 
+
+drop type if exists overnight_room_type;
+create type overnight_room_type as enum('single', 'double', 'twin', 'suite', 'studio', 'quad', 'villa', 'penthouse');
+
+create table overnight_room (
+    room_id serial primary key,
+    hotel_id int references hoted(hotel_id),
+    room_number varchar(10) not null,
+    price_per_night decimal(10, 2) default 50 check (price_per_night >= 0),
+    capacity int default 2,
+    room_type overnight_room_type,
+);
+
+
+drop type if exists meeting_room_type;
+create type meeting_room_type as enum('u-shaped', 'circular', 'classroom', 'conference', 'theate', 'cluster');
+
+drop type if exists meeting_room_equipment;
+create type meeting_room_equipment as enum('screen', 'projector', 'video-conferencing', 'whiteboard');
+
+create table meeting_room (
+    room_id serial primary key,
+    hotel_id int references hoted(hotel_id),
+    room_number varchar(10) not null,
+    hourly_rate decimal(10, 2) default 50 check (hourly_rate >= 0),
+    capacity int default 10,
+    room_type meeting_room_type,
+    room_equipment meeting_room_equipment,
+);
+
+drop type if exists reservation_status;
+create type reservation_status as enum('reserved', 'canceled', 'in process', 'terminated', 'completed');
+
+create table reservation (
+    reservation_id serial primary key,
+    user_id int references user(user_id);
+    check_in_date timestamp not null,
+    check_out_date timestamp not null,
+    total_cost decimal(10, 2),
+    guest_count int,
+    created_at timestamp default NOW()
+    status reservation_status default 'reserved',
+);
+
+
+create table overnight_room_reservation (
+    reservation_id int references reservation(reservation_id),
+    room_id int references overnight_room(room_id)
+);
+
+create table meeting_room_reservation (
+    reservation_id int references reservation(reservation_id),
+    room_id int references meeting_room(room_id)
+);
+
+-- to easily see which rooms this reservation reserves
+delete if exists view combined_room_reservation;
+create view combined_room_reservation as
+    select reservation_id, room_id, 'overnight' as room_category
+    from overnight_room_reservation
+union all
+    select reservation_id, room_id, 'meeting' as room_category
+    from meeting_room_reservation;
+
+
+create table feedback (
+    feedback_id serial primary key,
+    reservation_id int references reservation(reservation_id),
+    feedback_response text,
+    rating int not null check (rating between 1 and 5),
+    created_at timestamp default NOW()
+);
+
+drop type if exists payment_method_type;
+create type payment_method_type as enum('visa', 'master card', 'arca', 'cash', 'check'); -- we can add telcell, idram, etc.
+
+create table payment (
+    payment_id serial primary key,
+    reservation_id int references reservation(reservation_id),
+    payment_method payment_method_type,
+    amount decimal(10, 2),
+    created_at timestamp default NOW()
+);
+
+create table food_order (
+    order_id serual primary key,
+    reservation_id int references reservation(reservation_id),
+);
