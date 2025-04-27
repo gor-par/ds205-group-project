@@ -26,7 +26,6 @@ create table "user" (
     created_at timestamp default NOW()
 );
 
- -- the same table cannot be used for both users and employees. maybe we should ask Saro whether having this as a separate table for clarity is a good idea
 create table user_authentication (
     user_id int primary key references "user"(user_id),
     password_hash text not null,
@@ -74,14 +73,15 @@ create table overnight_room (
     room_id serial primary key,
     hotel_id int references hotel(hotel_id),
     room_number varchar(10) not null,
-    price_per_night decimal(10, 2) default 50 check (price_per_night >= 0),
+    price_per_night decimal(10,2) default 50 check (price_per_night >= 0),
     capacity int default 2,
-    room_type overnight_room_type
+    room_type overnight_room_type,
+    unique (hotel_id, room_number)
 );
 
 
 drop type if exists meeting_room_type;
-create type meeting_room_type as enum('u-shaped', 'circular', 'classroom', 'conference', 'theate', 'cluster');
+create type meeting_room_type as enum('u-shaped', 'circular', 'classroom', 'conference', 'theater', 'cluster');
 
 drop type if exists meeting_room_equipment;
 create type meeting_room_equipment as enum('screen', 'projector', 'video-conferencing', 'whiteboard');
@@ -152,5 +152,8 @@ create table payment (
 
 create table food_order (
     order_id serial primary key,
-    reservation_id int references reservation(reservation_id)
+    reservation_id int references reservation(reservation_id),
+    order_details text,
+    amount decimal(10,2),
+    created_at timestamp
 );
