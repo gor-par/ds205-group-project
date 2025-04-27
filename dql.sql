@@ -1,3 +1,73 @@
+--BASIC OPERATIONS
+
+--Registering a New Guest
+INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at)
+VALUES ('Ann', 'Maggie', 'Doe', 'ann.doe@gmail.com', '091123456', NOW());
+
+--Leaving Feedback After a Completed Stay
+INSERT INTO feedback (reservation_id, feedback_response, rating, created_at)
+VALUES (51, 'Everything was excellent!', 5, '2024-08-15 14:30:00');
+
+--Placing a Food Order During a Stay
+INSERT INTO food_order (reservation_id, amount, created_at) VALUES (51, 59.99, '2024-08-15 13:15:00');
+
+-- Room popularity by branch(Most and Least Booked Overnight Rooms)
+WITH room_bookings AS (
+    SELECT 
+        h.name AS hotel_name,
+        o.room_number,
+        COUNT(overnight_room_reservation.reservation_id) AS times_booked
+    FROM 
+        overnight_room o
+    LEFT JOIN overnight_room_reservation 
+        ON o.room_id = overnight_room_reservation.room_id
+    JOIN hotel h 
+        ON o.hotel_id = h.hotel_id
+    GROUP BY 
+        h.name, o.room_number, o.room_id
+)
+SELECT * 
+FROM room_bookings
+WHERE times_booked = (SELECT MAX(times_booked) FROM room_bookings)
+   OR times_booked = (SELECT MIN(times_booked) FROM room_bookings)
+ORDER BY times_booked DESC;
+
+--Most and Least Booked Meeting Rooms
+WITH meeting_bookings AS (
+    SELECT 
+        h.name AS hotel_name,
+        m.room_number,
+        COUNT(meeting_room_reservation.reservation_id) AS times_booked
+    FROM 
+        meeting_room m
+    LEFT JOIN meeting_room_reservation 
+        ON m.room_id = meeting_room_reservation.room_id
+    JOIN hotel h 
+        ON m.hotel_id = h.hotel_id
+    GROUP BY 
+        h.name, m.room_number, m.room_id
+)
+SELECT * 
+FROM meeting_bookings
+WHERE times_booked = (SELECT MAX(times_booked) FROM meeting_bookings)
+   OR times_booked = (SELECT MIN(times_booked) FROM meeting_bookings)
+ORDER BY times_booked DESC;
+
+-- Generate a bill for a guest’s food consumption.
+
+SELECT 
+    fo.reservation_id,
+    SUM(fo.amount) AS total_food_bill
+FROM 
+    food_order fo
+GROUP BY 
+    fo.reservation_id
+ORDER BY 
+    total_food_bill DESC;
+
+
+Գոռ կարաս դու քոնի հետ դրանք էլ DQL ավելացնես ու նոր pushանե՞ս
+
 --Visitor-Focused Queries
 
 -- 1. View stay history, payments, and feedback
