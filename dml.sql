@@ -12,440 +12,725 @@ TRUNCATE TABLE
     meeting_room,
     employee_details,
     user_authentication,
-    "user",
-    hotel
+    hotel,
+    "user"
 RESTART IDENTITY CASCADE;
 
--- Insert Hotels
-INSERT INTO hotel (name, hotel_address, room_quantity, capacity, branch_manager_id) VALUES
-('Elysian Hotel Yerevan', ROW('10 Mashtots Ave', 'Yerevan', 'Armenia'), 80, 160, NULL),
-('Elysian Hotel Tsaghkadzor', ROW('4 Olympic Street', 'Tsaghkadzor', 'Armenia'), 60, 120, NULL),
-('Elysian Hotel Dilijan', ROW('22 Forest Lane', 'Dilijan', 'Armenia'), 50, 100, NULL),
-('Elysian Hotel Gyumri', ROW('6 Vardanants Square', 'Gyumri', 'Armenia'), 70, 140, NULL),
-('Elysian Hotel Sevan', ROW('1 Lake View Road', 'Sevan', 'Armenia'), 40, 80, NULL);
-
 -- Insert Users
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Amelia', NULL, 'Davis', 'amelia.davis95@gmail.com', '091244250', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Amelia', NULL, 'Jackson', 'amelia.jackson48@gmail.com', '091649596', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Evelyn', NULL, 'Rodriguez', 'evelyn.rodriguez28@gmail.com', '091761294', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Matthew', NULL, 'Gonzalez', 'matthew.gonzalez87@gmail.com', '091264389', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Amelia', NULL, 'Jones', 'amelia.jones69@gmail.com', '091128191', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Evelyn', NULL, 'Garcia', 'evelyn.garcia23@gmail.com', '091631753', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('John', NULL, 'Garcia', 'john.garcia7@gmail.com', '091737632', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Emma', NULL, 'Hernandez', 'emma.hernandez72@gmail.com', '091542784', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('James', NULL, 'Williams', 'james.williams8@gmail.com', '091886040', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('John', NULL, 'Smith', 'john.smith86@gmail.com', '091431735', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Sophia', NULL, 'Anderson', 'sophia.anderson5@gmail.com', '091663069', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Sarah', NULL, 'Garcia', 'sarah.garcia46@gmail.com', '091818159', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('David', NULL, 'Lopez', 'david.lopez7@gmail.com', '091491147', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Emma', NULL, 'Anderson', 'emma.anderson15@gmail.com', '091913398', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Emily', NULL, 'Williams', 'emily.williams8@gmail.com', '091615640', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Samuel', NULL, 'Moore', 'samuel.moore40@gmail.com', '091527049', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Benjamin', NULL, 'Rodriguez', 'benjamin.rodriguez78@gmail.com', '091996595', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Benjamin', NULL, 'Gonzalez', 'benjamin.gonzalez92@gmail.com', '091607750', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Sophia', NULL, 'Davis', 'sophia.davis51@gmail.com', '091359122', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Sarah', NULL, 'Martin', 'sarah.martin48@gmail.com', '091701692', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Matthew', NULL, 'Hernandez', 'matthew.hernandez62@gmail.com', '091428508', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('James', NULL, 'Rodriguez', 'james.rodriguez99@gmail.com', '091892723', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Andrew', NULL, 'Garcia', 'andrew.garcia21@gmail.com', '091937032', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Matthew', NULL, 'Martin', 'matthew.martin33@gmail.com', '091346373', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Amelia', NULL, 'Thomas', 'amelia.thomas55@gmail.com', '091919409', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Andrew', NULL, 'Johnson', 'andrew.johnson19@gmail.com', '091266889', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Isabella', NULL, 'Martin', 'isabella.martin57@gmail.com', '091711745', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('John', NULL, 'Davis', 'john.davis80@gmail.com', '091201938', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Evelyn', NULL, 'Martin', 'evelyn.martin46@gmail.com', '091702141', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('James', NULL, 'Martin', 'james.martin14@gmail.com', '091835189', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Isabella', NULL, 'Martinez', 'isabella.martinez19@gmail.com', '091827518', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Olivia', NULL, 'Jackson', 'olivia.jackson88@gmail.com', '091799588', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Daniel', NULL, 'Jones', 'daniel.jones71@gmail.com', '091634327', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Mia', NULL, 'Brown', 'mia.brown41@gmail.com', '091588220', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Joseph', NULL, 'Anderson', 'joseph.anderson15@gmail.com', '091857349', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Samuel', NULL, 'Jackson', 'samuel.jackson14@gmail.com', '091702437', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Benjamin', NULL, 'Williams', 'benjamin.williams16@gmail.com', '091379347', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Matthew', NULL, 'Brown', 'matthew.brown56@gmail.com', '091817450', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Andrew', NULL, 'Anderson', 'andrew.anderson38@gmail.com', '091682074', NOW());
-INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES ('Andrew', NULL, 'Thomas', 'andrew.thomas62@gmail.com', '091802369', NOW());
+INSERT INTO "user" (first_name, middle_name, last_name, email, phone_number, created_at) VALUES
+('Amelia', 'Rose', 'Davis', 'amelia.davis95@elysian.com', '091244250', '2023-01-01 10:00:00'),
+('Hannah', NULL, 'Jackson', 'hannah.jackson48@elysian.com', '091649596', '2023-01-15 14:22:00'),
+('Evelyn', 'Marie', 'Rodriguez', 'evelyn.rodriguez28@elysian.com', '091761294', '2023-02-10 09:30:00'),
+('Matthew', NULL, 'Gonzalez', 'matthew.gonzalez87@elysian.com', '091264389', '2023-03-03 16:45:00'),
+('Chloe', NULL, 'Jones', 'chloe.jones69@elysian.com', '091128191', '2023-03-25 11:12:00'),
+('Evelyn', NULL, 'Garcia', 'evelyn.garcia23@elysian.com', '091631753', '2023-04-02 08:50:00'),
+('John', 'Michael', 'Garcia', 'john.garcia7@gmail.com', '091737632', '2023-04-30 18:05:00'),
+('Emma', 'Grace', 'Hernandez', 'emma.hernandez72@gmail.com', '091542784', '2023-05-12 13:37:00'),
+('James', NULL, 'Williams', 'james.williams8@gmail.com', '091886040', '2023-06-01 09:01:00'),
+('Luke', NULL, 'Smith', 'luke.smith86@gmail.com', '091431735', '2023-06-20 15:45:00'),
+('Sophia', 'Elizabeth', 'Anderson', 'sophia.anderson5@gmail.com', '091663069', '2023-07-08 10:22:00'),
+('Sarah', NULL, 'Garcia', 'sarah.garcia46@gmail.com', '091818159', '2023-07-29 07:30:00'),
+('David', NULL, 'Lopez', 'david.lopez7@gmail.com', '091491147', '2023-08-14 11:15:00'),
+('Emma', NULL, 'Anderson', 'emma.anderson15@gmail.com', '091913398', '2023-08-29 16:50:00'),
+('Emily', 'Noelle', 'Williams', 'emily.williams8@gmail.com', '091615640', '2023-09-20 12:10:00'),
+('Samuel', 'James', 'Moore', 'samuel.moore40@gmail.com', '091527049', '2023-10-11 08:22:00'),
+('Benjamin', NULL, 'Rodriguez', 'benjamin.rodriguez78@gmail.com', '091996595', '2023-10-28 14:00:00'),
+('Liam', NULL, 'Gonzalez', 'liam.gonzalez92@gmail.com', '091607750', '2023-11-14 17:00:00'),
+('Sophia', NULL, 'Davis', 'sophia.davis51@gmail.com', '091359122', '2023-12-02 09:45:00'),
+('Sarah', 'Anne', 'Martin', 'sarah.martin48@gmail.com', '091701692', '2023-12-20 10:11:00'),
+('Matthew', NULL, 'Hernandez', 'matthew.hernandez62@gmail.com', '091428508', '2024-01-10 15:32:00'),
+('James', 'Alexander', 'Rodriguez', 'james.rodriguez99@gmail.com', '091892723', '2024-01-28 07:22:00'),
+('Andrew', NULL, 'Garcia', 'andrew.garcia21@gmail.com', '091937032', '2024-02-20 11:18:00'),
+('Ethan', NULL, 'Martin', 'ethan.martin33@gmail.com', '091346373', '2024-03-09 13:44:00'),
+('Amelia', NULL, 'Thomas', 'amelia.thomas55@gmail.com', '091919409', '2024-04-01 16:33:00'),
+('Andrew', 'Joseph', 'Johnson', 'andrew.johnson19@gmail.com', '091266889', '2024-04-19 08:00:00'),
+('Isabella', NULL, 'Martin', 'isabella.martin57@gmail.com', '091711745', '2024-05-12 14:50:00'),
+('John', NULL, 'Davis', 'john.davis80@gmail.com', '091201938', '2024-06-03 17:35:00'),
+('Evelyn', 'Claire', 'Martin', 'evelyn.martin46@gmail.com', '091702141', '2024-06-25 10:14:00'),
+('James', NULL, 'Martin', 'james.martin14@gmail.com', '091835189', '2024-07-14 11:28:00'),
+('Isabella', 'Louise', 'Martinez', 'isabella.martinez19@gmail.com', '091827518', '2024-08-02 09:21:00'),
+('Olivia', NULL, 'Jackson', 'olivia.jackson88@gmail.com', '091799588', '2024-08-24 13:45:00'),
+('Daniel', 'Andrew', 'Jones', 'daniel.jones71@gmail.com', '091634327', '2024-09-10 18:01:00'),
+('Mia', NULL, 'Brown', 'mia.brown41@gmail.com', '091588220', '2024-09-30 10:20:00'),
+('Joseph', 'Daniel', 'Anderson', 'joseph.anderson15@gmail.com', '091857349', '2024-10-19 07:15:00'),
+('Samuel', NULL, 'Jackson', 'samuel.jackson14@gmail.com', '091702437', '2024-11-07 14:00:00'),
+('Benjamin', 'Lee', 'Williams', 'benjamin.williams16@gmail.com', '091379347', '2024-11-26 08:30:00'),
+('Matthew', 'Henry', 'Brown', 'matthew.brown56@gmail.com', '091817450', '2024-12-15 16:44:00'),
+('Andrew', NULL, 'Anderson', 'andrew.anderson38@gmail.com', '091682074', '2025-01-02 10:30:00'),
+('Andrew', 'Paul', 'Thomas', 'andrew.thomas62@gmail.com', '091802369', '2025-01-22 09:20:00'),
+('Alice', 'Joy', 'Roberts', 'alice.roberts35@gmail.com', '091337247', '2025-02-05 10:45:00'),
+('Oliver', 'Paul', 'Dunn', 'oliver.dunn53@gmail.com', '091829475', '2025-02-18 13:20:00'),
+('Grace', NULL, 'Walker', 'grace.walker19@gmail.com', '091452836', '2025-03-03 11:10:00'),
+('Mason', NULL, 'Scott', 'mason.scott41@gmail.com', '091903176', '2025-03-12 14:00:00'),
+('Ella', NULL, 'Turner', 'ella.turner23@gmail.com', '091582194', '2025-03-25 15:22:00'),
+('Ethan', 'Max', 'Adams', 'ethan.adams38@gmail.com', '091410573', '2025-04-01 10:55:00'),
+('Ava', 'Louise', 'Clark', 'ava.clark78@gmail.com', '091344628', '2025-04-13 12:33:00'),
+('Isaac', 'Dale', 'Lewis', 'isaac.lewis52@gmail.com', '091825307', '2025-04-22 16:40:00'),
+('Lily', 'Ann', 'Evans', 'lily.evans60@gmail.com', '091272482', '2025-04-03 09:05:00'),
+('Jack', 'James', 'Allen', 'jack.allen29@gmail.com', '091515362', '2025-03-14 13:15:00'),
+('Ruby', 'Faith', 'Martinez', 'ruby.martinez11@gmail.com', '091789264', '2025-02-01 10:35:00'),
+('Jacob', 'Simon', 'Taylor', 'jacob.taylor67@gmail.com', '091629705', '2025-01-15 11:45:00'),
+('Maya', NULL, 'Harris', 'maya.harris84@gmail.com', '091781346', '2025-04-25 12:50:00'),
+('Daniel', 'Victor', 'Baker', 'daniel.baker76@gmail.com', '091238951', '2025-03-07 14:25:00'),
+('Sophia', 'Marie', 'Wright', 'sophia.wright40@gmail.com', '091332058', '2025-02-19 15:30:00'),
+('Lucas', 'Cole', 'King', 'lucas.king29@gmail.com', '091840923', '2025-01-01 16:40:00'),
+('Amelia', 'Nicole', 'Green', 'amelia.green71@gmail.com', '091293574', '2025-04-10 17:25:00'),
+('Owen', 'Bryce', 'Young', 'owen.young51@gmail.com', '091716249', '2025-03-05 18:00:00'),
+('Charlotte', 'Ella', 'Hughes', 'charlotte.hughes22@gmail.com', '091703211', '2025-02-15 10:10:00'),
+('Henry', 'Thomas', 'Nelson', 'henry.nelson68@gmail.com', '091304987', '2025-01-03 14:30:00');
+
+-- Insert Hotels
+INSERT INTO hotel (name, hotel_address, branch_manager_id) VALUES
+('Elysian Hotel Yerevan', ROW('10 Mashtots Ave', 'Yerevan', 'Armenia'), 1),
+('Elysian Hotel Tsaghkadzor', ROW('4 Olympic Street', 'Tsaghkadzor', 'Armenia'), 2),
+('Elysian Hotel Dilijan', ROW('22 Forest Lane', 'Dilijan', 'Armenia'), 3),
+('Elysian Hotel Gyumri', ROW('6 Vardanants Square', 'Gyumri', 'Armenia'), 4),
+('Elysian Hotel Sevan', ROW('1 Lake View Road', 'Sevan', 'Armenia'), 5);
 
 -- Insert User Authentication
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (1, 'hash_1', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (2, 'hash_2', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (3, 'hash_3', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (4, 'hash_4', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (5, 'hash_5', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (6, 'hash_6', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (7, 'hash_7', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (8, 'hash_8', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (9, 'hash_9', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (10, 'hash_10', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (11, 'hash_11', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (12, 'hash_12', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (13, 'hash_13', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (14, 'hash_14', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (15, 'hash_15', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (16, 'hash_16', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (17, 'hash_17', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (18, 'hash_18', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (19, 'hash_19', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (20, 'hash_20', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (21, 'hash_21', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (22, 'hash_22', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (23, 'hash_23', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (24, 'hash_24', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (25, 'hash_25', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (26, 'hash_26', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (27, 'hash_27', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (28, 'hash_28', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (29, 'hash_29', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (30, 'hash_30', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (31, 'hash_31', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (32, 'hash_32', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (33, 'hash_33', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (34, 'hash_34', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (35, 'hash_35', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (36, 'hash_36', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (37, 'hash_37', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (38, 'hash_38', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (39, 'hash_39', NOW());
-INSERT INTO user_authentication (user_id, password_hash, password_last_updated) VALUES (40, 'hash_40', NOW());
+INSERT INTO "user_authentication" (user_id, password_hash, password_last_updated, totp_secret, security_question, security_question_hash) VALUES
+(1, '5f4dcc3b5aa765d61d8327deb882cf99', '2023-01-02 08:00:00', NULL, NULL, NULL),
+(2, 'e99a18c428cb38d5f260853678922e03', '2023-01-16 12:00:00', 'J3h9sAdHkX6gF7YtY', NULL, NULL),
+(3, 'd8578edf8458ce06fbc5bb1b1e4b1e57b', '2023-02-11 09:00:00', NULL, NULL, NULL),
+(4, '1f3870be274f6c49b3e31a0c6728957f', '2023-03-04 17:00:00', '9Fk6TxGzKk82J4BdV', NULL, NULL),
+(5, 'a5dcbf1c1d03b7c8c6c22db71b689320', '2023-03-26 11:00:00', NULL, NULL, NULL),
+(6, '31d6cfe0d16ae931b73c59d7e0c089c0', '2023-04-03 10:30:00', NULL, NULL, NULL),
+(7, 'd033e22ae348aeb5660fc2140aec35850c4da997', '2023-05-01 13:00:00', NULL, 'What is your mothers maiden name?', 'f5fe8c089f3b6021b773df02049d68a0'),
+(8, '8d969eef6ecad3c29a3a629280e686cf', '2023-05-13 14:00:00', NULL, NULL, NULL),
+(9, 'c20ad4d76fe97759aa27a0c99bff6710', '2023-06-01 08:00:00', 'Q3p0R7ShXqD7t3HjB', NULL, NULL),
+(10, 'b7f783baed24d748ebf0d6a6c2645c97', '2023-06-21 16:00:00', NULL, NULL, NULL),
+(11, '7506d7d25dff2ec21b1e8c1142d54b88', '2023-07-09 11:00:00', NULL, 'What was the name of your first pet?', 'a12c4dbe41d149a3a46751e9d9f4d9b5'),
+(12, 'c4ca4238a0b923820dcc509a6f75849b', '2023-07-30 12:00:00', NULL, NULL, NULL),
+(13, '9bf31c7ff062936a96d3c8bd1f8f2ff3', '2023-08-15 10:00:00', NULL, NULL, NULL),
+(14, 'e1e1e4f8b97d3c8a3a8038fae73224b2', '2023-08-30 16:00:00', 'G2bM3eZkNwH0L1UeX', NULL, NULL),
+(15, 'b029eb1dce197fb7e5d86dfb7b0d9c0f', '2023-09-21 10:00:00', NULL, NULL, NULL),
+(16, '2c6ee24b09816a6f14f95d1698b24ead', '2023-10-12 13:00:00', NULL, NULL, NULL),
+(17, '9a1158154dfa42cadd5b3b4d1d1059f4', '2023-10-29 11:00:00', 'Q9dF3lUvLk07H8CgV', NULL, NULL),
+(18, '0cc175b9c0f1b6a831c399e269772661', '2023-11-15 10:00:00', NULL, NULL, NULL),
+(19, '8c6976e5b5410415bde908bd94e3a258', '2023-12-03 08:00:00', NULL, 'What is the name of your favorite book?', 'ccd10cf13a56acb82b8ab2bb01f31427'),
+(20, '18baf9d7d2bb156c99c35b3a7a9639e5', '2023-12-21 13:00:00', NULL, NULL, NULL),
+(21, '1e23f9feab560987e380e1e3b06c9adf', '2024-01-11 15:00:00', NULL, NULL, NULL),
+(22, '8e296a067a37563370d7c60e61cb8d1d', '2024-02-21 12:00:00', 'F5rN7tZyOq0J6tPcY', NULL, NULL),
+(23, '4a8a08f09d37b73795649038408b5f33', '2024-03-10 12:00:00', NULL, NULL, NULL),
+(24, 'd3d9446802a44259755d38e6d163e820', '2024-04-02 14:00:00', 'U9hB0lKtVs5F2pWcE', NULL, NULL),
+(25, 'b2e98bca3dfe5b3d507d5689d789fb07', '2024-05-13 16:00:00', NULL, 'What was the name of your childhood best friend?', '2872d2114e84831372c3db07c6b215f8'),
+(26, 'ab56b4d92b40713acc5af89985d3b2c1', '2024-05-29 13:00:00', NULL, NULL, NULL),
+(27, '481bcfffa04064a56d00a91c2e395272', '2024-06-02 10:00:00', NULL, NULL, NULL),
+(28, 'b7b2fa3ad5727d282735b1f1da16f62e', '2024-06-27 12:00:00', NULL, NULL, NULL),
+(29, '1f77e6ab7c3b41791ad1f951a0edfa89', '2024-07-14 09:00:00', 'H1dT3vXkGkG5iB8vU', NULL, NULL),
+(30, 'e66d9c4a14931df93c8a5d17938a3385', '2024-08-04 15:00:00', NULL, NULL, NULL),
+(31, '2a8fd59c7414ec7e3e1ac1de8bb9417f', '2024-08-28 09:00:00', 'U8cN1jPlXbH4G6EvN', NULL, NULL),
+(32, 'e2c865db1695b2f5b9cc0c2ffed54b97', '2024-09-11 11:00:00', NULL, NULL, NULL),
+(33, '41f6fc7e282b7cb5fdf5d10d7c06a9f0', '2024-09-26 16:00:00', NULL, NULL, NULL),
+(34, '1e9b1f2df4f8bb42398eacdbf7d939fd', '2024-10-12 10:00:00', NULL, 'What city were you born in?', 'a8c74521fb9cfda1b3291e0177a2e381'),
+(35, 'c6ff1e05738b54c47f80a2a1a5106e98', '2024-11-05 14:00:00', NULL, NULL, NULL),
+(36, '8d9d4f91b32aaf7a85505bce0044bb07', '2024-12-09 11:00:00', NULL, NULL, NULL),
+(37, 'c6e217e702fd5c818cb7f1591e913b68', '2025-01-04 13:00:00', NULL, NULL, NULL),
+(38, '9be0b8ff0d8acdf81ebd65d37652901b', '2025-02-06 12:00:00', NULL, NULL, NULL),
+(39, 'c9783e18fdd8fe6fdefb1972518dbb6f', '2025-03-12 14:00:00', NULL, NULL, NULL),
+(40, '8e9d1de91115d7b2db87b5b1a98844e4', '2025-04-05 16:00:00', 'V9wE0q3vZk6jP2RdT', NULL, NULL),
+(41, '0405b9846a7d9b818855d1c2a16a5c62', '2025-04-14 18:00:00', NULL, NULL, NULL),
+(42, 'c9a5c30df86d78e1307ba7734c3bfe2a', '2025-04-25 17:00:00', NULL, NULL, NULL),
+(43, '7e78b8bb18e34b8b9493e032803be446', '2025-04-12 12:00:00', NULL, NULL, NULL),
+(44, '95b2fe7c3f7cfbf1ed52e4307f315b28', '2025-03-26 11:00:00', NULL, NULL, NULL),
+(45, '6b5d5e7e7f6ac5e5b46d2a5601e8156d', '2025-02-08 10:00:00', NULL, NULL, NULL),
+(46, 'bed0fc7b63db2634d7289f99fc00f7a9', '2025-01-22 12:00:00', 'D8tQ2jFwO2a8H3UqZ', NULL, NULL),
+(47, 'ed8a5f3e31d23c58b845d441ab7f8c79', '2025-04-02 13:00:00', 'S4pG5kDjR0u7K4LrQ', NULL, NULL),
+(48, 'e6fa2dce64fba477d957de76c9eb899e', '2025-03-18 16:00:00', NULL, NULL, NULL),
+(49, '58a109fdfaa7c40516d8fc23d8f82816', '2025-02-05 12:00:00', NULL, 'What is your favorite color?', 'd7b26a5d21171789b2b51076481511c9'),
+(50, 'b3bb7c2fa459b0fba4f6e34c0353b300', '2025-01-17 13:00:00', NULL, NULL, NULL),
+(51, '0622a70e5ac5cd5f700aa46fe11623d1', '2025-04-01 10:00:00', NULL, NULL, NULL),
+(52, '939b51edee5eaf11629d9be92de1cf88', '2025-03-18 14:00:00', NULL, NULL, NULL),
+(53, 'c9f4f9a79eabed8b77b5f1d2a60ec9c7', '2025-02-10 16:00:00', NULL, NULL, NULL),
+(54, 'e4dbf60d96f1bc8bc4d5c4b022a38558', '2025-01-15 14:00:00', NULL, NULL, NULL),
+(55, 'f2a12329e6b124d4b25b6b2a45b12851', '2025-04-20 10:00:00', NULL, NULL, NULL),
+(56, '4490fa4d24d6d67ad01fd34796e1193b', '2025-03-03 11:00:00', NULL, NULL, NULL),
+(57, 'a2d43ef62d9028ad42120f20a1a1bb42', '2025-02-19 12:00:00', NULL, NULL, NULL),
+(58, '68e3d63ac5ff88ab202d3a91433b2544', '2025-01-05 13:00:00', NULL, NULL, NULL),
+(59, '65e4fd3f07f29a3de2629fd5bb92041d', '2025-04-20 14:00:00', 'Z5gQ4eVhW4uLgN7Xy', NULL, NULL),
+(60, '8b7106aaff004df53aaf6c120e5ed276', '2025-02-10 10:00:00', NULL, NULL, NULL);
+
 
 -- Insert Employee Details
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (14, 'cleaner', NOW(), NULL, 918, 'ACC14', 5);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (26, 'support_agent', NOW(), NULL, 1544, 'ACC26', 1);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (20, 'cleaner', NOW(), NULL, 1412, 'ACC20', 3);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (18, 'security_guard', NOW(), NULL, 1901, 'ACC18', 3);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (35, 'branch_manager', NOW(), NULL, 870, 'ACC35', 2);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (23, 'lobby_attendant', NOW(), NULL, 1276, 'ACC23', 5);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (8, 'branch_manager', NOW(), NULL, 1354, 'ACC8', 5);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (11, 'branch_manager', NOW(), NULL, 704, 'ACC11', 4);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (33, 'security_guard', NOW(), NULL, 1876, 'ACC33', 4);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (6, 'cleaner', NOW(), NULL, 1334, 'ACC6', 4);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (37, 'lobby_attendant', NOW(), NULL, 1609, 'ACC37', 4);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (2, 'front_desk_agent', NOW(), NULL, 1030, 'ACC2', 4);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (25, 'security_guard', NOW(), NULL, 1635, 'ACC25', 1);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (3, 'lobby_attendant', NOW(), NULL, 1235, 'ACC3', 3);
-INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES (10, 'front_desk_agent', NOW(), NULL, 863, 'ACC10', 1);
+INSERT INTO employee_details (user_id, role, contract_start, supervisor_id, salary, salary_transaction_account, hotel_id) VALUES
+(1, 'branch_manager', '2024-03-11', NULL, 600000, '491823057489', 1),
+(2, 'branch_manager', '2023-09-03', NULL, 300000, '704982314092', 2),
+(3, 'branch_manager', '2024-01-05', NULL, 400000, '780294156320', 3),
+(4, 'branch_manager', '2023-09-03', NULL, 300000, '704982314092', 4),
+(5, 'branch_manager', '2024-01-05', NULL, 400000, '780294156320', 5),
+(14, 'cleaner', '2024-02-15', 5, 100000, '581092340129', 5),
+(26, 'support_agent', '2023-11-04', 1, 200000, '903412789654', 1),
+(20, 'cleaner', '2023-06-27', 3, 500000, '349827104593', 3),
+(18, 'security_guard', '2023-10-12', 3, 300000, '657231908574', 3),
+(23, 'lobby_attendant', '2023-08-22', 5, 120000, '812563947512', 5),
+(33, 'security_guard', '2023-12-17', 4, 500000, '189203845720', 4),
+(6, 'cleaner', '2024-02-02', 4, 100000, '932084157230', 4),
+(37, 'lobby_attendant', '2024-01-22', 4, 200000, '192837465001', 4),
+(8, 'front_desk_agent', '2023-05-14', 4, 100000, '234819027340', 4),
+(25, 'security_guard', '2024-02-09', 1, 400000, '817230495872', 1),
+(11, 'lobby_attendant', '2023-07-29', 3, 300000, '549820375198', 3),
+(10, 'front_desk_agent', '2023-04-01', 1, 100000, '982034857091', 1);
 
 -- Insert Overnight Rooms
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (1, '100', 181, 4, 'double');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (1, '101', 279, 4, 'double');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (1, '102', 295, 1, 'double');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (1, '103', 146, 3, 'penthouse');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (1, '104', 235, 5, 'studio');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (1, '105', 78, 3, 'twin');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (1, '106', 206, 4, 'suite');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (1, '107', 86, 2, 'villa');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (1, '108', 87, 1, 'suite');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (1, '109', 173, 1, 'double');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (2, '200', 110, 5, 'twin');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (2, '201', 189, 1, 'penthouse');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (2, '202', 174, 4, 'twin');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (2, '203', 251, 5, 'villa');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (2, '204', 132, 5, 'single');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (2, '205', 157, 1, 'villa');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (2, '206', 200, 4, 'suite');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (2, '207', 53, 5, 'quad');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (2, '208', 193, 4, 'single');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (2, '209', 163, 2, 'twin');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (3, '300', 94, 1, 'studio');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (3, '301', 64, 4, 'double');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (3, '302', 245, 1, 'quad');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (3, '303', 125, 1, 'single');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (3, '304', 125, 1, 'suite');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (3, '305', 166, 3, 'quad');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (3, '306', 188, 1, 'penthouse');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (3, '307', 256, 2, 'penthouse');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (3, '308', 141, 5, 'penthouse');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (3, '309', 110, 3, 'quad');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (4, '400', 51, 5, 'suite');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (4, '401', 252, 2, 'double');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (4, '402', 77, 3, 'penthouse');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (4, '403', 259, 5, 'studio');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (4, '404', 211, 1, 'twin');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (4, '405', 180, 4, 'quad');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (4, '406', 261, 2, 'studio');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (4, '407', 95, 1, 'twin');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (4, '408', 217, 1, 'single');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (4, '409', 216, 4, 'suite');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (5, '500', 180, 2, 'twin');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (5, '501', 256, 2, 'twin');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (5, '502', 88, 1, 'twin');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (5, '503', 184, 2, 'penthouse');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (5, '504', 56, 5, 'suite');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (5, '505', 78, 5, 'double');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (5, '506', 197, 3, 'quad');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (5, '507', 277, 5, 'single');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (5, '508', 221, 3, 'quad');
-INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES (5, '509', 57, 3, 'quad');
+INSERT INTO overnight_room (hotel_id, room_number, price_per_night, capacity, room_type) VALUES
+(1, '100', 190, 2, 'double'),
+(1, '101', 240, 4, 'double'),
+(1, '102', 170, 2, 'double'),
+(1, '103', 410, 6, 'penthouse'),
+(1, '104', 160, 3, 'studio'),
+(1, '105', 110, 2, 'twin'),
+(1, '106', 280, 3, 'suite'),
+(1, '107', 420, 5, 'villa'),
+(1, '108', 260, 3, 'suite'),
+(1, '109', 155, 2, 'double'),
+(2, '100', 140, 2, 'twin'),
+(2, '101', 470, 5, 'penthouse'),
+(2, '102', 120, 2, 'twin'),
+(2, '103', 450, 6, 'villa'),
+(2, '104', 100, 1, 'single'),
+(2, '105', 320, 4, 'villa'),
+(2, '106', 290, 3, 'suite'),
+(2, '107', 130, 4, 'quad'),
+(2, '108', 120, 1, 'single'),
+(2, '109', 150, 2, 'twin'),
+(3, '100', 130, 2, 'studio'),
+(3, '101', 160, 2, 'double'),
+(3, '102', 300, 4, 'quad'),
+(3, '103', 90, 1, 'single'),
+(3, '104', 210, 2, 'suite'),
+(3, '105', 260, 4, 'quad'),
+(3, '106', 460, 6, 'penthouse'),
+(3, '107', 520, 6, 'penthouse'),
+(3, '108', 490, 5, 'penthouse'),
+(3, '109', 230, 4, 'quad'),
+(4, '100', 220, 3, 'suite'),
+(4, '101', 200, 2, 'double'),
+(4, '102', 410, 5, 'penthouse'),
+(4, '103', 200, 2, 'studio'),
+(4, '104', 140, 2, 'twin'),
+(4, '105', 250, 5, 'quad'),
+(4, '106', 220, 2, 'studio'),
+(4, '107', 130, 1, 'twin'),
+(4, '108', 100, 1, 'single'),
+(4, '109', 270, 3, 'suite'),
+(5, '100', 160, 2, 'twin'),
+(5, '101', 180, 2, 'twin'),
+(5, '102', 100, 1, 'twin'),
+(5, '103', 480, 5, 'penthouse'),
+(5, '104', 310, 4, 'suite'),
+(5, '105', 200, 2, 'double'),
+(5, '106', 270, 5, 'quad'),
+(5, '107', 140, 1, 'single'),
+(5, '108', 300, 6, 'quad'),
+(5, '109', 180, 4, 'quad');
+
 
 -- Insert Meeting Rooms
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (1, 'M1', 42, 42, 'classroom', 'screen');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (1, 'M2', 114, 12, 'u-shaped', 'screen');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (1, 'M3', 84, 49, 'u-shaped', 'video-conferencing');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (1, 'M4', 133, 19, 'cluster', 'video-conferencing');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (2, 'M1', 83, 50, 'u-shaped', 'screen');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (2, 'M2', 103, 33, 'conference', 'whiteboard');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (2, 'M3', 43, 29, 'classroom', 'projector');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (2, 'M4', 50, 22, 'circular', 'projector');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (3, 'M1', 94, 31, 'classroom', 'projector');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (3, 'M2', 72, 47, 'cluster', 'video-conferencing');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (3, 'M3', 39, 24, 'cluster', 'projector');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (3, 'M4', 128, 27, 'conference', 'whiteboard');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (4, 'M1', 47, 27, 'circular', 'whiteboard');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (4, 'M2', 99, 40, 'conference', 'video-conferencing');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (4, 'M3', 127, 45, 'circular', 'video-conferencing');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (4, 'M4', 54, 35, 'cluster', 'projector');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (5, 'M1', 100, 22, 'conference', 'whiteboard');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (5, 'M2', 88, 29, 'theater', 'projector');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (5, 'M3', 93, 50, 'u-shaped', 'whiteboard');
-INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES (5, 'M4', 140, 32, 'classroom', 'screen');
+INSERT INTO meeting_room (hotel_id, room_number, hourly_rate, capacity, room_type, room_equipment) VALUES
+(1, 'M1', 40, 40, 'classroom', 'screen'),
+(1, 'M2', 110, 10, 'u-shaped', 'screen'),
+(1, 'M3', 80, 50, 'u-shaped', 'video-conferencing'),
+(1, 'M4', 130, 20, 'cluster', 'video-conferencing'),
+(2, 'M1', 80, 50, 'u-shaped', 'screen'),
+(2, 'M2', 100, 35, 'conference', 'whiteboard'),
+(2, 'M3', 40, 30, 'classroom', 'projector'),
+(2, 'M4', 50, 25, 'circular', 'projector'),
+(3, 'M1', 90, 30, 'classroom', 'projector'),
+(3, 'M2', 70, 50, 'cluster', 'video-conferencing'),
+(3, 'M3', 40, 25, 'cluster', 'projector'),
+(3, 'M4', 130, 30, 'conference', 'whiteboard'),
+(4, 'M1', 50, 30, 'circular', 'whiteboard'),
+(4, 'M2', 100, 40, 'conference', 'video-conferencing'),
+(4, 'M3', 130, 45, 'circular', 'video-conferencing'),
+(4, 'M4', 50, 35, 'cluster', 'projector'),
+(5, 'M1', 100, 25, 'conference', 'whiteboard'),
+(5, 'M2', 90, 30, 'theater', 'projector'),
+(5, 'M3', 90, 50, 'u-shaped', 'whiteboard'),
+(5, 'M4', 140, 30, 'classroom', 'screen');
 
 -- Insert Reservations
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (35, '2024-01-31 20:25:11', '2024-02-06 20:25:11', 887, 2, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (8, '2024-09-28 22:30:57', '2024-09-29 22:30:57', 152, 1, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (11, '2024-07-02 14:20:27', '2024-07-07 14:20:27', 269, 1, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (35, '2024-05-04 01:58:02', '2024-05-08 01:58:02', 128, 4, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (1, '2024-05-10 11:02:42', '2024-05-12 11:02:42', 343, 2, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (35, '2024-08-15 14:45:09', '2024-08-20 14:45:09', 572, 2, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (33, '2024-01-25 00:02:40', '2024-01-28 00:02:40', 639, 2, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (27, '2024-08-09 15:39:46', '2024-08-13 15:39:46', 406, 2, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (17, '2024-02-26 12:12:38', '2024-03-04 12:12:38', 577, 2, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (24, '2024-05-11 03:33:05', '2024-05-13 03:33:05', 599, 2, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (11, '2024-09-18 00:17:09', '2024-09-21 00:17:09', 255, 1, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (16, '2024-10-16 11:15:17', '2024-10-18 11:15:17', 279, 3, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (32, '2024-11-08 09:26:48', '2024-11-12 09:26:48', 498, 1, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (30, '2024-09-09 15:42:39', '2024-09-10 15:42:39', 284, 2, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (24, '2024-02-25 09:35:38', '2024-02-26 09:35:38', 805, 4, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (31, '2024-11-05 05:38:20', '2024-11-07 05:38:20', 787, 4, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (23, '2024-11-12 11:44:26', '2024-11-13 11:44:26', 440, 4, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (31, '2024-12-24 04:54:52', '2024-12-26 04:54:52', 153, 1, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (29, '2024-10-23 01:10:29', '2024-10-28 01:10:29', 313, 4, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (32, '2024-01-10 00:56:48', '2024-01-15 00:56:48', 341, 1, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (23, '2024-07-29 20:40:24', '2024-07-30 20:40:24', 932, 3, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (19, '2024-01-21 08:48:58', '2024-01-28 08:48:58', 193, 2, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (39, '2024-05-12 09:51:14', '2024-05-19 09:51:14', 594, 1, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (40, '2024-01-06 00:27:00', '2024-01-08 00:27:00', 509, 1, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (1, '2024-06-16 16:06:05', '2024-06-22 16:06:05', 926, 1, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (30, '2024-03-18 13:27:19', '2024-03-20 13:27:19', 456, 2, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (28, '2024-02-21 22:10:45', '2024-02-26 22:10:45', 439, 1, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (19, '2024-08-15 09:44:44', '2024-08-16 09:44:44', 678, 1, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (31, '2024-05-27 02:03:47', '2024-05-28 02:03:47', 831, 4, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (8, '2024-05-29 19:58:06', '2024-06-04 19:58:06', 158, 3, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (35, '2024-09-10 22:33:18', '2024-09-13 22:33:18', 294, 3, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (24, '2024-08-08 23:10:48', '2024-08-10 23:10:48', 516, 3, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (19, '2024-07-07 07:56:59', '2024-07-12 07:56:59', 524, 4, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (11, '2024-08-10 19:19:04', '2024-08-12 19:19:04', 767, 3, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (30, '2024-12-30 11:38:38', '2025-01-05 11:38:38', 390, 3, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (8, '2024-05-25 06:14:19', '2024-05-26 06:14:19', 468, 2, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (37, '2024-06-03 20:40:38', '2024-06-10 20:40:38', 626, 3, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (33, '2024-08-15 07:59:37', '2024-08-17 07:59:37', 307, 3, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (20, '2024-02-08 03:37:44', '2024-02-14 03:37:44', 666, 2, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (35, '2024-09-26 15:12:32', '2024-09-29 15:12:32', 391, 3, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (35, '2024-07-12 15:25:02', '2024-07-17 15:25:02', 901, 1, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (13, '2024-11-19 09:13:22', '2024-11-21 09:13:22', 991, 3, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (8, '2024-01-02 05:31:57', '2024-01-03 05:31:57', 749, 3, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (7, '2024-03-26 04:23:29', '2024-03-31 04:23:29', 825, 4, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (18, '2024-12-27 23:08:07', '2025-01-02 23:08:07', 600, 3, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (16, '2024-10-31 17:35:38', '2024-11-01 17:35:38', 868, 2, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (19, '2024-09-16 05:30:47', '2024-09-22 05:30:47', 228, 2, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (23, '2024-10-18 17:44:33', '2024-10-25 17:44:33', 664, 3, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (28, '2024-06-17 07:21:27', '2024-06-18 07:21:27', 768, 2, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (12, '2024-07-01 05:42:00', '2024-07-04 05:42:00', 973, 2, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (38, '2024-11-13 02:59:07', '2024-11-20 02:59:07', 545, 3, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (5, '2024-08-09 21:21:23', '2024-08-13 21:21:23', 100, 4, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (11, '2024-03-02 08:34:13', '2024-03-05 08:34:13', 617, 2, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (5, '2024-02-26 16:01:49', '2024-03-02 16:01:49', 949, 3, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (34, '2024-11-04 06:30:31', '2024-11-07 06:30:31', 180, 4, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (30, '2024-06-29 05:35:18', '2024-07-06 05:35:18', 174, 2, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (31, '2024-12-10 01:23:04', '2024-12-16 01:23:04', 770, 2, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (39, '2024-03-16 00:08:43', '2024-03-18 00:08:43', 176, 1, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (20, '2024-05-24 01:00:22', '2024-05-30 01:00:22', 179, 2, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (22, '2024-09-29 00:12:50', '2024-10-06 00:12:50', 685, 4, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (32, '2024-08-12 03:18:11', '2024-08-14 03:18:11', 925, 3, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (9, '2024-10-24 00:11:37', '2024-10-29 00:11:37', 209, 1, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (33, '2024-03-23 22:45:14', '2024-03-27 22:45:14', 652, 2, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (7, '2024-05-19 12:39:02', '2024-05-26 12:39:02', 236, 1, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (9, '2024-02-03 09:43:29', '2024-02-08 09:43:29', 820, 2, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (14, '2024-08-15 02:54:21', '2024-08-20 02:54:21', 185, 1, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (1, '2024-06-16 13:23:18', '2024-06-18 13:23:18', 957, 4, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (35, '2024-11-01 15:05:58', '2024-11-04 15:05:58', 861, 1, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (35, '2024-10-26 06:37:32', '2024-11-02 06:37:32', 865, 2, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (33, '2024-08-22 12:38:18', '2024-08-29 12:38:18', 741, 1, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (2, '2024-01-09 22:17:21', '2024-01-11 22:17:21', 960, 1, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (37, '2024-10-08 18:55:57', '2024-10-11 18:55:57', 672, 3, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (8, '2024-07-14 23:18:27', '2024-07-19 23:18:27', 644, 4, 'canceled');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (32, '2024-10-08 19:36:37', '2024-10-11 19:36:37', 885, 2, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (36, '2024-06-01 04:12:08', '2024-06-04 04:12:08', 299, 1, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (2, '2024-05-14 23:30:37', '2024-05-16 23:30:37', 944, 1, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (37, '2024-07-22 05:51:37', '2024-07-24 05:51:37', 602, 2, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (35, '2024-01-20 17:32:03', '2024-01-26 17:32:03', 573, 1, 'completed');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (1, '2024-11-27 00:46:06', '2024-12-01 00:46:06', 476, 3, 'reserved');
-INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES (22, '2024-07-12 07:36:14', '2024-07-19 07:36:14', 219, 3, 'canceled');
+INSERT INTO reservation (user_id, check_in_date, check_out_date, total_cost, guest_count, status) VALUES
+(35, '2024-01-31 20:25:11', '2024-02-06 20:25:11', 887, 2, 'completed'),
+(8, '2024-09-28 22:30:57', '2024-09-29 22:30:57', 152, 1, 'canceled'),
+(11, '2024-07-02 14:20:27', '2024-07-07 14:20:27', 269, 1, 'reserved'),
+(35, '2024-05-04 01:58:02', '2024-05-08 01:58:02', 128, 4, 'completed'),
+(1, '2024-05-10 11:02:42', '2024-05-12 11:02:42', 343, 2, 'canceled'),
+(35, '2024-08-15 14:45:09', '2024-08-20 14:45:09', 572, 2, 'reserved'),
+(33, '2024-01-25 00:02:40', '2024-01-28 00:02:40', 639, 2, 'reserved'),
+(27, '2024-08-09 15:39:46', '2024-08-13 15:39:46', 406, 2, 'reserved'),
+(17, '2024-02-26 12:12:38', '2024-03-04 12:12:38', 577, 2, 'completed'),
+(24, '2024-05-11 03:33:05', '2024-05-13 03:33:05', 599, 2, 'completed'),
+(11, '2024-09-18 00:17:09', '2024-09-21 00:17:09', 255, 1, 'canceled'),
+(16, '2024-10-16 11:15:17', '2024-10-18 11:15:17', 279, 3, 'canceled'),
+(32, '2024-11-08 09:26:48', '2024-11-12 09:26:48', 498, 1, 'completed'),
+(30, '2024-09-09 15:42:39', '2024-09-10 15:42:39', 284, 2, 'canceled'),
+(24, '2024-02-25 09:35:38', '2024-02-26 09:35:38', 805, 4, 'canceled'),
+(31, '2024-11-05 05:38:20', '2024-11-07 05:38:20', 787, 4, 'completed'),
+(23, '2024-11-12 11:44:26', '2024-11-13 11:44:26', 440, 4, 'canceled'),
+(31, '2024-12-24 04:54:52', '2024-12-26 04:54:52', 153, 1, 'reserved'),
+(29, '2024-10-23 01:10:29', '2024-10-28 01:10:29', 313, 4, 'canceled'),
+(32, '2024-01-10 00:56:48', '2024-01-15 00:56:48', 341, 1, 'completed'),
+(23, '2024-07-29 20:40:24', '2024-07-30 20:40:24', 932, 3, 'canceled'),
+(19, '2024-01-21 08:48:58', '2024-01-28 08:48:58', 193, 2, 'completed'),
+(39, '2024-05-12 09:51:14', '2024-05-19 09:51:14', 594, 1, 'completed'),
+(40, '2024-01-06 00:27:00', '2024-01-08 00:27:00', 509, 1, 'completed'),
+(1, '2024-06-16 16:06:05', '2024-06-22 16:06:05', 926, 1, 'completed'),
+(30, '2024-03-18 13:27:19', '2024-03-20 13:27:19', 456, 2, 'completed'),
+(28, '2024-02-21 22:10:45', '2024-02-26 22:10:45', 439, 1, 'completed'),
+(19, '2024-08-15 09:44:44', '2024-08-16 09:44:44', 678, 1, 'completed'),
+(31, '2024-05-27 02:03:47', '2024-05-28 02:03:47', 831, 4, 'completed'),
+(8, '2024-05-29 19:58:06', '2024-06-04 19:58:06', 158, 3, 'canceled'),
+(35, '2024-09-10 22:33:18', '2024-09-13 22:33:18', 294, 3, 'completed'),
+(24, '2024-08-08 23:10:48', '2024-08-10 23:10:48', 516, 3, 'completed'),
+(19, '2024-07-07 07:56:59', '2024-07-12 07:56:59', 524, 4, 'reserved'),
+(11, '2024-08-10 19:19:04', '2024-08-12 19:19:04', 767, 3, 'canceled'),
+(30, '2024-12-30 11:38:38', '2025-01-05 11:38:38', 390, 3, 'canceled'),
+(8, '2024-05-25 06:14:19', '2024-05-26 06:14:19', 468, 2, 'reserved'),
+(37, '2024-06-03 20:40:38', '2024-06-10 20:40:38', 626, 3, 'canceled'),
+(33, '2024-08-15 07:59:37', '2024-08-17 07:59:37', 307, 3, 'reserved'),
+(20, '2024-02-08 03:37:44', '2024-02-14 03:37:44', 666, 2, 'canceled'),
+(35, '2024-09-26 15:12:32', '2024-09-29 15:12:32', 391, 3, 'reserved'),
+(35, '2024-07-12 15:25:02', '2024-07-17 15:25:02', 901, 1, 'reserved'),
+(13, '2024-11-19 09:13:22', '2024-11-21 09:13:22', 991, 3, 'reserved'),
+(8, '2024-01-02 05:31:57', '2024-01-03 05:31:57', 749, 3, 'reserved'),
+(7, '2024-03-26 04:23:29', '2024-03-31 04:23:29', 825, 4, 'reserved'),
+(18, '2024-12-27 23:08:07', '2025-01-02 23:08:07', 600, 3, 'canceled'),
+(16, '2024-10-31 17:35:38', '2024-11-01 17:35:38', 868, 2, 'canceled'),
+(19, '2024-09-16 05:30:47', '2024-09-22 05:30:47', 228, 2, 'canceled'),
+(23, '2024-10-18 17:44:33', '2024-10-25 17:44:33', 664, 3, 'canceled'),
+(28, '2024-06-17 07:21:27', '2024-06-18 07:21:27', 768, 2, 'completed'),
+(12, '2024-07-01 05:42:00', '2024-07-04 05:42:00', 973, 2, 'canceled'),
+(38, '2024-11-13 02:59:07', '2024-11-20 02:59:07', 545, 3, 'canceled'),
+(5, '2024-08-09 21:21:23', '2024-08-13 21:21:23', 100, 4, 'reserved'),
+(11, '2024-03-02 08:34:13', '2024-03-05 08:34:13', 617, 2, 'canceled'),
+(5, '2024-02-26 16:01:49', '2024-03-02 16:01:49', 949, 3, 'canceled'),
+(34, '2024-11-04 06:30:31', '2024-11-07 06:30:31', 180, 4, 'canceled'),
+(30, '2024-06-29 05:35:18', '2024-07-06 05:35:18', 174, 2, 'completed'),
+(31, '2024-12-10 01:23:04', '2024-12-16 01:23:04', 770, 2, 'completed'),
+(39, '2024-03-16 00:08:43', '2024-03-18 00:08:43', 176, 1, 'reserved'),
+(20, '2024-05-24 01:00:22', '2024-05-30 01:00:22', 179, 2, 'canceled'),
+(22, '2024-09-29 00:12:50', '2024-10-06 00:12:50', 685, 4, 'completed'),
+(32, '2024-08-12 03:18:11', '2024-08-14 03:18:11', 925, 3, 'completed'),
+(9, '2024-10-24 00:11:37', '2024-10-29 00:11:37', 209, 1, 'canceled'),
+(33, '2024-03-23 22:45:14', '2024-03-27 22:45:14', 652, 2, 'canceled'),
+(7, '2024-05-19 12:39:02', '2024-05-26 12:39:02', 236, 1, 'completed'),
+(9, '2024-02-03 09:43:29', '2024-02-08 09:43:29', 820, 2, 'reserved'),
+(14, '2024-08-15 02:54:21', '2024-08-20 02:54:21', 185, 1, 'completed'),
+(1, '2024-06-16 13:23:18', '2024-06-18 13:23:18', 957, 4, 'completed'),
+(35, '2024-11-01 15:05:58', '2024-11-04 15:05:58', 861, 1, 'completed'),
+(35, '2024-10-26 06:37:32', '2024-11-02 06:37:32', 865, 2, 'reserved'),
+(33, '2024-08-22 12:38:18', '2024-08-29 12:38:18', 741, 1, 'reserved'),
+(2, '2024-01-09 22:17:21', '2024-01-11 22:17:21', 960, 1, 'reserved'),
+(37, '2024-10-08 18:55:57', '2024-10-11 18:55:57', 672, 3, 'reserved'),
+(8, '2024-07-14 23:18:27', '2024-07-19 23:18:27', 644, 4, 'canceled'),
+(32, '2024-10-08 19:36:37', '2024-10-11 19:36:37', 885, 2, 'reserved'),
+(36, '2024-06-01 04:12:08', '2024-06-04 04:12:08', 299, 1, 'reserved'),
+(2, '2024-05-14 23:30:37', '2024-05-16 23:30:37', 944, 1, 'completed'),
+(37, '2024-07-22 05:51:37', '2024-07-24 05:51:37', 602, 2, 'reserved'),
+(35, '2024-01-20 17:32:03', '2024-01-26 17:32:03', 573, 1, 'completed'),
+(1, '2024-11-27 00:46:06', '2024-12-01 00:46:06', 476, 3, 'reserved'),
+(22, '2024-07-12 07:36:14', '2024-07-19 07:36:14', 219, 3, 'canceled'),
+(6, '2024-01-10 14:00:00', '2024-01-12 12:00:00', 380.00, 2, 'completed'),
+(7, '2024-02-05 15:00:00', '2024-02-07 12:00:00', 400.00, 3, 'completed'),
+(8, '2024-03-10 16:00:00', '2024-03-13 12:00:00', 520.00, 2, 'completed'),
+(9, '2024-04-01 14:00:00', '2024-04-05 12:00:00', 800.00, 3, 'completed'),
+(10, '2024-05-15 16:00:00', '2024-05-18 12:00:00', 600.00, 2, 'completed'),
+(11, '2024-06-01 15:00:00', '2024-06-05 12:00:00', 900.00, 4, 'completed'),
+(12, '2024-07-20 14:00:00', '2024-07-22 12:00:00', 350.00, 2, 'completed'),
+(13, '2024-08-15 16:00:00', '2024-08-18 12:00:00', 600.00, 3, 'completed'),
+(14, '2024-09-01 14:00:00', '2024-09-04 12:00:00', 500.00, 2, 'completed'),
+(15, '2024-10-01 15:00:00', '2024-10-03 12:00:00', 460.00, 2, 'completed'),
+(16, '2024-11-05 14:00:00', '2024-11-07 12:00:00', 480.00, 3, 'completed'),
+(17, '2024-12-15 16:00:00', '2024-12-18 12:00:00', 510.00, 2, 'completed'),
+(18, '2024-12-20 14:00:00', '2024-12-22 12:00:00', 440.00, 1, 'completed'),
+(19, '2025-01-05 15:00:00', '2025-01-07 12:00:00', 390.00, 3, 'completed'),
+(20, '2025-01-15 14:00:00', '2025-01-19 12:00:00', 710.00, 2, 'completed'),
+(21, '2025-02-01 16:00:00', '2025-02-05 12:00:00', 820.00, 4, 'completed'),
+(22, '2025-03-01 15:00:00', '2025-03-03 12:00:00', 480.00, 2, 'completed'),
+(23, '2025-03-10 14:00:00', '2025-03-12 12:00:00', 500.00, 3, 'completed'),
+(24, '2025-04-05 15:00:00', '2025-04-07 12:00:00', 490.00, 2, 'completed'),
+(25, '2025-04-20 14:00:00', '2025-04-22 12:00:00', 520.00, 2, 'completed'),
+(26, '2025-05-10 15:00:00', '2025-05-12 12:00:00', 480.00, 3, 'completed'),
+(27, '2024-02-10 14:00:00', '2024-02-13 12:00:00', 460.00, 2, 'completed'),
+(28, '2024-03-15 14:00:00', '2024-03-18 12:00:00', 720.00, 3, 'completed'),
+(29, '2024-04-10 16:00:00', '2024-04-12 12:00:00', 510.00, 2, 'completed'),
+(30, '2024-05-05 15:00:00', '2024-05-08 12:00:00', 640.00, 3, 'completed'),
+(31, '2024-06-15 14:00:00', '2024-06-18 12:00:00', 680.00, 2, 'completed'),
+(32, '2024-07-10 16:00:00', '2024-07-13 12:00:00', 730.00, 2, 'completed'),
+(33, '2024-08-20 15:00:00', '2024-08-22 12:00:00', 460.00, 1, 'completed'),
+(34, '2024-09-10 14:00:00', '2024-09-12 12:00:00', 500.00, 2, 'completed'),
+(35, '2024-10-15 15:00:00', '2024-10-18 12:00:00', 550.00, 3, 'completed'),
+(36, '2024-11-12 16:00:00', '2024-11-14 12:00:00', 460.00, 2, 'completed'),
+(37, '2024-12-10 14:00:00', '2024-12-12 12:00:00', 480.00, 3, 'completed'),
+(38, '2025-01-10 15:00:00', '2025-01-13 12:00:00', 520.00, 4, 'completed'),
+(39, '2025-02-08 14:00:00', '2025-02-11 12:00:00', 490.00, 2, 'completed'),
+(40, '2025-03-15 15:00:00', '2025-03-18 12:00:00', 720.00, 3, 'completed'),
+(41, '2025-04-05 14:00:00', '2025-04-07 12:00:00', 480.00, 3, 'completed'),
+(42, '2025-04-10 16:00:00', '2025-04-13 12:00:00', 660.00, 3, 'completed'),
+(43, '2025-05-01 15:00:00', '2025-05-03 12:00:00', 500.00, 2, 'completed'),
+(44, '2024-05-10 14:00:00', '2024-05-12 12:00:00', 540.00, 2, 'completed'),
+(45, '2024-06-01 15:00:00', '2024-06-04 12:00:00', 680.00, 3, 'completed'),
+(46, '2024-07-01 16:00:00', '2024-07-04 12:00:00', 710.00, 3, 'completed'),
+(47, '2024-08-10 15:00:00', '2024-08-12 12:00:00', 550.00, 2, 'completed'),
+(48, '2024-09-01 14:00:00', '2024-09-03 12:00:00', 430.00, 2, 'completed'),
+(49, '2024-10-01 15:00:00', '2024-10-04 12:00:00', 460.00, 3, 'completed'),
+(50, '2024-11-05 16:00:00', '2024-11-08 12:00:00', 500.00, 2, 'completed'),
+(21, '2025-01-01 14:00:00', '2025-01-03 12:00:00', 420.00, 2, 'completed'),
+(22, '2025-02-01 15:00:00', '2025-02-04 12:00:00', 470.00, 2, 'completed'),
+(23, '2025-03-01 14:00:00', '2025-03-03 12:00:00', 450.00, 2, 'completed'),
+(24, '2025-04-01 15:00:00', '2025-04-03 12:00:00', 520.00, 3, 'completed'),
+(25, '2025-05-01 14:00:00', '2025-05-04 12:00:00', 650.00, 3, 'completed'),
+(26, '2025-06-01 15:00:00', '2025-06-03 12:00:00', 500.00, 2, 'reserved'),
+(27, '2025-07-01 14:00:00', '2025-07-04 12:00:00', 710.00, 2, 'reserved'),
+(28, '2025-08-01 15:00:00', '2025-08-03 12:00:00', 400.00, 2, 'reserved'),
+(29, '2025-09-15 14:00:00', '2025-09-18 12:00:00', 550.00, 3, 'reserved'),
+(60, '2025-10-10 14:00:00', '2025-10-13 12:00:00', 640.00, 2, 'reserved'),
+(45, '2024-04-01 14:00:00', '2024-04-04 12:00:00', 550.00, 2, 'canceled'),
+(46, '2024-05-01 15:00:00', '2024-05-04 12:00:00', 460.00, 3, 'canceled'),
+(47, '2024-06-01 14:00:00', '2024-06-04 12:00:00', 600.00, 2, 'canceled'),
+(48, '2024-07-01 16:00:00', '2024-07-03 12:00:00', 430.00, 3, 'canceled'),
+(49, '2024-08-01 14:00:00', '2024-08-04 12:00:00', 590.00, 2, 'canceled'),
+(50, '2024-09-01 14:00:00', '2024-09-03 12:00:00', 470.00, 1, 'canceled'),
+(51, '2024-10-01 15:00:00', '2024-10-04 12:00:00', 530.00, 2, 'canceled'),
+(52, '2024-11-01 16:00:00', '2024-11-03 12:00:00', 400.00, 1, 'canceled'),
+(53, '2024-12-01 14:00:00', '2024-12-03 12:00:00', 450.00, 2, 'canceled'),
+(54, '2025-01-01 14:00:00', '2025-01-04 12:00:00', 520.00, 3, 'canceled'),
+(55, '2025-02-01 14:00:00', '2025-02-04 12:00:00', 470.00, 2, 'canceled'),
+(56, '2025-03-01 14:00:00', '2025-03-04 12:00:00', 440.00, 3, 'canceled'),
+(57, '2025-04-01 14:00:00', '2025-04-04 12:00:00', 510.00, 2, 'canceled'),
+(58, '2025-05-01 15:00:00', '2025-05-04 12:00:00', 560.00, 3, 'canceled'),
+(59, '2024-04-01 15:00:00', '2024-04-04 12:00:00', 600.00, 3, 'canceled'),
+(60, '2024-05-01 14:00:00', '2024-05-03 12:00:00', 430.00, 2, 'canceled'),
+(46, '2024-06-01 14:00:00', '2024-06-03 12:00:00', 470.00, 1, 'canceled'),
+(47, '2024-07-01 15:00:00', '2024-07-04 12:00:00', 480.00, 2, 'canceled'),
+(49, '2024-08-01 14:00:00', '2024-08-04 12:00:00', 500.00, 2, 'canceled'),
+(50, '2024-09-01 14:00:00', '2024-09-04 12:00:00', 540.00, 3, 'canceled'),
+(51, '2024-10-01 14:00:00', '2024-10-03 12:00:00', 420.00, 1, 'canceled');
+
+
 
 -- Insert Overnight Room Reservations
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (6, 50);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (65, 38);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (78, 32);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (71, 34);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (30, 12);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (28, 27);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (32, 29);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (20, 24);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (61, 45);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (47, 19);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (26, 13);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (50, 34);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (5, 38);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (79, 36);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (16, 50);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (32, 38);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (53, 48);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (37, 21);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (74, 37);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (20, 24);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (20, 23);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (45, 31);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (72, 1);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (77, 31);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (9, 32);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (3, 16);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (32, 40);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (13, 21);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (70, 20);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (30, 36);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (44, 29);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (8, 39);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (19, 48);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (51, 13);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (71, 4);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (2, 49);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (9, 19);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (70, 16);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (49, 27);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (53, 4);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (24, 30);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (71, 15);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (8, 16);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (8, 3);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (53, 31);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (75, 24);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (41, 9);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (54, 24);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (19, 17);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (66, 39);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (70, 25);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (26, 43);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (3, 41);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (62, 29);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (42, 26);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (17, 2);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (79, 34);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (47, 7);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (35, 44);
-INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES (25, 39);
+INSERT INTO overnight_room_reservation (reservation_id, room_id) VALUES
+(6, 50), 
+(65, 38), 
+(78, 32), 
+(71, 34), 
+(30, 12), 
+(28, 27), 
+(32, 29), 
+(20, 24), 
+(61, 45), 
+(47, 19), 
+(26, 13), 
+(50, 34), 
+(5, 38), 
+(79, 36), 
+(16, 50), 
+(32, 38), 
+(53, 48), 
+(37, 21), 
+(74, 37), 
+(20, 24), 
+(20, 23), 
+(45, 31), 
+(72, 1), 
+(77, 31), 
+(9, 32), 
+(3, 16), 
+(32, 40), 
+(13, 21), 
+(70, 20), 
+(30, 36), 
+(44, 29), 
+(8, 39), 
+(19, 48), 
+(51, 13), 
+(71, 4), 
+(2, 49), 
+(9, 19), 
+(70, 16), 
+(49, 27), 
+(53, 4), 
+(24, 30), 
+(71, 15), 
+(8, 16), 
+(8, 3), 
+(53, 31), 
+(75, 24), 
+(41, 9), 
+(54, 24), 
+(19, 17), 
+(66, 39), 
+(70, 25), 
+(26, 43), 
+(3, 41), 
+(62, 29), 
+(42, 26), 
+(17, 2), 
+(79, 34), 
+(47, 7), 
+(35, 44), 
+(25, 39),
+(79, 18),
+(136, 13),
+(116, 24),
+(29, 48),
+(126, 40),
+(124, 36),
+(137, 4),
+(71, 5),
+(112, 12),
+(3, 40),
+(130, 49),
+(133, 42),
+(81, 46),
+(31, 48),
+(21, 43),
+(89, 12),
+(63, 41),
+(88, 25),
+(149, 30),
+(87, 11),
+(30, 22),
+(153, 38),
+(155, 30),
+(102, 11),
+(19, 33),
+(51, 49),
+(59, 34),
+(115, 28),
+(84, 17),
+(120, 14),
+(128, 16),
+(9, 18),
+(42, 29),
+(17, 11),
+(48, 21),
+(73, 9),
+(44, 16),
+(7, 10),
+(15, 15),
+(135, 2),
+(119, 22),
+(122, 44),
+(66, 27),
+(14, 27),
+(94, 14),
+(77, 37),
+(141, 24),
+(118, 19),
+(58, 33),
+(6, 3),
+(143, 5),
+(56, 37),
+(109, 14),
+(33, 43),
+(91, 32),
+(101, 15),
+(97, 50),
+(98, 8),
+(80, 2),
+(12, 23),
+(2, 21),
+(75, 17),
+(74, 31),
+(150, 35),
+(54, 29),
+(92, 47),
+(18, 12),
+(41, 45),
+(40, 3),
+(39, 5),
+(121, 1),
+(64, 39),
+(37, 46),
+(110, 20),
+(50, 6),
+(104, 2),
+(28, 9),
+(123, 1),
+(93, 18),
+(138, 26),
+(100, 48),
+(114, 13),
+(145, 34),
+(53, 48),
+(46, 40),
+(1, 36),
+(38, 4),
+(47, 5),
+(152, 26),
+(85, 6),
+(134, 49),
+(72, 42),
+(34, 12),
+(61, 28),
+(125, 3),
+(144, 22),
+(32, 41),
+(13, 25),
+(16, 30),
+(8, 21),
+(70, 2),
+(22, 38),
+(86, 20),
+(43, 11),
+(107, 23),
+(148, 29),
+(117, 34),
+(76, 28),
+(151, 17),
+(26, 24),
+(11, 16),
+(69, 8),
+(108, 9),
+(106, 1),
+(111, 1),
+(131, 9),
+(113, 26),
+(99, 10),
+(45, 45),
+(5, 2),
+(27, 22),
+(4, 44),
+(140, 17),
+(78, 27),
+(105, 24),
+(132, 37),
+(62, 24),
+(60, 19),
+(139, 33),
+(127, 3),
+(83, 15),
+(129, 27),
+(49, 14),
+(24, 43),
+(90, 32),
+(154, 15),
+(55, 50),
+(20, 8),
+(146, 20),
+(96, 23),
+(67, 21),
+(35, 17),
+(68, 31),
+(57, 35),
+(95, 29),
+(147, 47),
+(23, 12),
+(103, 45),
+(10, 33),
+(82, 25),
+(142, 7),
+(52, 39),
+(25, 46),
+(36, 20),
+(65, 6);
 
 -- Insert Meeting Room Reservations
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (63, 4);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (17, 15);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (7, 18);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (61, 5);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (55, 5);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (44, 5);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (58, 4);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (77, 11);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (67, 19);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (43, 17);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (52, 11);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (17, 10);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (17, 19);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (16, 14);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (6, 9);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (18, 5);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (34, 7);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (71, 9);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (13, 3);
-INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES (33, 17);
+INSERT INTO meeting_room_reservation (reservation_id, room_id) VALUES
+(63, 4),
+(17, 15),
+(7, 18),
+(61, 5),
+(55, 5),
+(44, 5),
+(58, 4),
+(77, 11),
+(67, 19),
+(43, 17),
+(52, 11),
+(17, 10),
+(17, 19),
+(16, 14),
+(6, 9),
+(18, 5),
+(34, 7),
+(71, 9),
+(13, 3),
+(33, 17);
 
 -- Insert Payments
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (1, 'TXN1', 'visa', 616);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (2, 'TXN2', 'cash', 893);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (3, 'TXN3', 'check', 399);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (4, 'TXN4', 'check', 323);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (5, 'TXN5', 'arca', 242);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (6, 'TXN6', 'arca', 464);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (7, 'TXN7', 'visa', 484);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (8, 'TXN8', 'master card', 230);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (9, 'TXN9', 'arca', 775);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (10, 'TXN10', 'visa', 612);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (11, 'TXN11', 'check', 679);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (12, 'TXN12', 'visa', 203);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (13, 'TXN13', 'master card', 597);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (14, 'TXN14', 'visa', 786);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (15, 'TXN15', 'master card', 519);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (16, 'TXN16', 'master card', 381);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (17, 'TXN17', 'master card', 451);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (18, 'TXN18', 'master card', 780);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (19, 'TXN19', 'cash', 299);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (20, 'TXN20', 'cash', 457);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (21, 'TXN21', 'visa', 445);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (22, 'TXN22', 'master card', 791);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (23, 'TXN23', 'check', 520);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (24, 'TXN24', 'master card', 985);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (25, 'TXN25', 'arca', 236);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (26, 'TXN26', 'master card', 252);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (27, 'TXN27', 'visa', 875);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (28, 'TXN28', 'check', 237);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (29, 'TXN29', 'cash', 238);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (30, 'TXN30', 'cash', 323);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (31, 'TXN31', 'visa', 851);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (32, 'TXN32', 'visa', 430);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (33, 'TXN33', 'arca', 665);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (34, 'TXN34', 'cash', 225);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (35, 'TXN35', 'check', 719);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (36, 'TXN36', 'arca', 900);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (37, 'TXN37', 'cash', 129);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (38, 'TXN38', 'visa', 471);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (39, 'TXN39', 'arca', 661);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (40, 'TXN40', 'check', 237);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (41, 'TXN41', 'master card', 518);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (42, 'TXN42', 'arca', 268);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (43, 'TXN43', 'arca', 155);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (44, 'TXN44', 'arca', 379);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (45, 'TXN45', 'cash', 307);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (46, 'TXN46', 'arca', 647);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (47, 'TXN47', 'visa', 871);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (48, 'TXN48', 'arca', 644);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (49, 'TXN49', 'visa', 739);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (50, 'TXN50', 'cash', 593);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (51, 'TXN51', 'arca', 117);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (52, 'TXN52', 'visa', 744);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (53, 'TXN53', 'arca', 852);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (54, 'TXN54', 'cash', 788);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (55, 'TXN55', 'visa', 663);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (56, 'TXN56', 'master card', 292);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (57, 'TXN57', 'cash', 936);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (58, 'TXN58', 'cash', 832);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (59, 'TXN59', 'visa', 688);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (60, 'TXN60', 'visa', 666);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (61, 'TXN61', 'visa', 305);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (62, 'TXN62', 'visa', 266);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (63, 'TXN63', 'master card', 390);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (64, 'TXN64', 'master card', 772);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (65, 'TXN65', 'master card', 521);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (66, 'TXN66', 'cash', 874);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (67, 'TXN67', 'arca', 496);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (68, 'TXN68', 'cash', 414);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (69, 'TXN69', 'arca', 763);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (70, 'TXN70', 'check', 996);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (71, 'TXN71', 'cash', 334);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (72, 'TXN72', 'cash', 336);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (73, 'TXN73', 'check', 907);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (74, 'TXN74', 'arca', 327);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (75, 'TXN75', 'master card', 283);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (76, 'TXN76', 'check', 655);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (77, 'TXN77', 'arca', 518);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (78, 'TXN78', 'cash', 108);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (79, 'TXN79', 'cash', 962);
-INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (80, 'TXN80', 'visa', 318);
+INSERT INTO payment (reservation_id, transaction_id, payment_method, amount, created_at) VALUES
+(1, 'txn_253423', 'master card', 287.35, '2025-04-12 18:01:04'),
+(4, 'txn_479129', 'cash', 174.25, '2025-04-18 18:01:04'),
+(9, 'txn_512358', 'visa', 467.92, '2025-04-24 18:01:04'),
+(10, 'txn_893541', 'arca', 227.65, '2025-03-27 18:01:04'),
+(13, 'txn_209632', 'master card', 192.34, '2025-04-02 18:01:04'),
+(16, 'txn_815573', 'visa', 318.45, '2025-04-08 18:01:04'),
+(20, 'txn_659481', 'check', 132.56, '2025-04-16 18:01:04'),
+(22, 'txn_785643', 'cash', 87.65, '2025-04-14 18:01:04'),
+(23, 'txn_309482', 'visa', 155.22, '2025-04-03 18:01:04'),
+(24, 'txn_437221', 'arca', 249.30, '2025-03-29 18:01:04'),
+(25, 'txn_991522', 'check', 311.98, '2025-04-10 18:01:04'),
+(26, 'txn_146393', 'visa', 320.11, '2025-04-13 18:01:04'),
+(27, 'txn_412635', 'master card', 179.76, '2025-04-04 18:01:04'),
+(28, 'txn_481216', 'visa', 249.15, '2025-04-02 18:01:04'),
+(29, 'txn_130719', 'arca', 385.88, '2025-04-19 18:01:04'),
+(31, 'txn_611208', 'check', 102.76, '2025-04-17 18:01:04'),
+(32, 'txn_104937', 'master card', 184.29, '2025-04-15 18:01:04'),
+(49, 'txn_221953', 'cash', 99.45, '2025-04-21 18:01:04'),
+(56, 'txn_439732', 'visa', 262.33, '2025-04-23 18:01:04'),
+(57, 'txn_938110', 'check', 420.17, '2025-03-30 18:01:04'),
+(60, 'txn_479314', 'master card', 211.85, '2025-04-16 18:01:04'),
+(61, 'txn_380761', 'visa', 97.56, '2025-04-06 18:01:04'),
+(64, 'txn_748435', 'arca', 189.40, '2025-04-25 18:01:04'),
+(66, 'txn_763290', 'visa', 344.25, '2025-03-27 18:01:04'),
+(67, 'txn_150756', 'check', 413.80, '2025-04-18 18:01:04'),
+(68, 'txn_456982', 'cash', 347.20, '2025-04-23 18:01:04'),
+(76, 'txn_192642', 'check', 250.99, '2025-04-21 18:01:04'),
+(78, 'txn_547368', 'master card', 415.33, '2025-04-14 18:01:04'),
+(81, 'txn_132470', 'visa', 299.60, '2025-04-17 18:01:04'),
+(82, 'txn_825149', 'cash', 132.75, '2025-04-25 18:01:04'),
+(83, 'txn_762948', 'visa', 289.75, '2025-03-31 18:01:04'),
+(84, 'txn_361503', 'check', 174.55, '2025-04-04 18:01:04'),
+(85, 'txn_128374', 'visa', 235.90, '2025-04-23 18:01:04'),
+(86, 'txn_965430', 'arca', 145.00, '2025-04-06 18:01:04'),
+(87, 'txn_210176', 'master card', 311.40, '2025-04-19 18:01:04'),
+(88, 'txn_804551', 'visa', 182.60, '2025-03-27 18:01:04'),
+(89, 'txn_575241', 'cash', 274.25, '2025-04-12 18:01:04'),
+(90, 'txn_933195', 'check', 234.10, '2025-04-02 18:01:04'),
+(91, 'txn_562803', 'arca', 163.65, '2025-04-09 18:01:04'),
+(92, 'txn_983563', 'visa', 125.80, '2025-04-11 18:01:04'),
+(93, 'txn_371206', 'cash', 412.50, '2025-03-30 18:01:04'),
+(94, 'txn_285672', 'check', 132.95, '2025-04-06 18:01:04'),
+(95, 'txn_691280', 'master card', 189.99, '2025-04-15 18:01:04'),
+(96, 'txn_486723', 'visa', 399.70, '2025-04-12 18:01:04'),
+(97, 'txn_950722', 'visa', 299.20, '2025-04-03 18:01:04'),
+(98, 'txn_371820', 'cash', 158.60, '2025-04-24 18:01:04'),
+(99, 'txn_623491', 'arca', 289.35, '2025-04-20 18:01:04'),
+(100, 'txn_302897', 'master card', 379.55, '2025-04-09 18:01:04'),
+(101, 'txn_913509', 'visa', 229.40, '2025-04-14 18:01:04'),
+(102, 'txn_138246', 'check', 213.10, '2025-04-23 18:01:04'),
+(103, 'txn_672513', 'visa', 142.75, '2025-03-28 18:01:04'),
+(104, 'txn_895202', 'arca', 187.25, '2025-04-18 18:01:04'),
+(105, 'txn_304859', 'cash', 156.00, '2025-04-21 18:01:04'),
+(106, 'txn_439874', 'master card', 254.45, '2025-04-10 18:01:04'),
+(107, 'txn_123849', 'visa', 194.30, '2025-04-14 18:01:04'),
+(108, 'txn_943671', 'check', 378.60, '2025-04-08 18:01:04'),
+(109, 'txn_172647', 'cash', 167.45, '2025-04-22 18:01:04'),
+(110, 'txn_578963', 'visa', 329.99, '2025-04-17 18:01:04'),
+(111, 'txn_815376', 'arca', 232.00, '2025-04-12 18:01:04'),
+(112, 'txn_609584', 'master card', 418.70, '2025-04-24 18:01:04'),
+(113, 'txn_276492', 'visa', 250.80, '2025-03-25 18:01:04'),
+(114, 'txn_748290', 'check', 184.60, '2025-04-19 18:01:04'),
+(115, 'txn_196312', 'visa', 295.00, '2025-04-22 18:01:04'),
+(116, 'txn_382176', 'cash', 314.50, '2025-04-18 18:01:04'),
+(117, 'txn_179574', 'visa', 225.40, '2025-04-14 18:01:04'),
+(118, 'txn_803524', 'master card', 392.20, '2025-04-07 18:01:04'),
+(119, 'txn_652197', 'arca', 171.60, '2025-04-02 18:01:04'),
+(120, 'txn_905381', 'visa', 315.80, '2025-03-29 18:01:04'),
+(121, 'txn_614205', 'cash', 389.99, '2025-04-09 18:01:04'),
+(122, 'txn_748506', 'visa', 259.15, '2025-04-24 18:01:04'),
+(123, 'txn_503827', 'check', 277.70, '2025-04-17 18:01:04'),
+(124, 'txn_380689', 'visa', 231.35, '2025-03-31 18:01:04'),
+(125, 'txn_194542', 'master card', 287.95, '2025-04-19 18:01:04'),
+(126, 'txn_412759', 'cash', 283.20, '2025-04-07 18:01:04'),
+(127, 'txn_168532', 'visa', 184.75, '2025-04-13 18:01:04'),
+(128, 'txn_785203', 'arca', 268.60, '2025-04-06 18:01:04'),
+(129, 'txn_456623', 'cash', 279.99, '2025-04-23 18:01:04'),
+(130, 'txn_397164', 'master card', 354.45, '2025-04-14 18:01:04');
+
 
 -- Insert Food Orders
 INSERT INTO food_order (reservation_id, order_details, amount, created_at) VALUES
@@ -492,53 +777,83 @@ INSERT INTO food_order (reservation_id, order_details, amount, created_at) VALUE
 
 
 -- Insert Feedback
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (19, 'Very good stay!', 1);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (28, 'Very good stay!', 5);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (47, 'Very good stay!', 4);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (52, 'Very good stay!', 1);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (64, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (39, 'Very good stay!', 4);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (24, 'Very good stay!', 2);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (55, 'Very good stay!', 4);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (48, 'Very good stay!', 4);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (76, 'Very good stay!', 5);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (29, 'Very good stay!', 5);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (32, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (58, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (18, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (23, 'Very good stay!', 2);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (26, 'Very good stay!', 1);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (21, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (38, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (72, 'Very good stay!', 4);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (56, 'Very good stay!', 4);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (43, 'Very good stay!', 2);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (61, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (3, 'Very good stay!', 2);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (2, 'Very good stay!', 4);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (11, 'Very good stay!', 5);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (73, 'Very good stay!', 5);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (63, 'Very good stay!', 5);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (13, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (14, 'Very good stay!', 1);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (79, 'Very good stay!', 4);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (74, 'Very good stay!', 2);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (51, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (69, 'Very good stay!', 2);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (71, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (33, 'Very good stay!', 5);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (53, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (41, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (8, 'Very good stay!', 1);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (35, 'Very good stay!', 3);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (1, 'Very good stay!', 2);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (49, 'Very good stay!', 4);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (34, 'Very good stay!', 2);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (30, 'Very good stay!', 5);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (12, 'Very good stay!', 1);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (22, 'Very good stay!', 2);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (10, 'Very good stay!', 1);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (62, 'Very good stay!', 5);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (77, 'Very good stay!', 2);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (31, 'Very good stay!', 2);
-INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (57, 'Very good stay!', 5);
+INSERT INTO feedback (reservation_id, feedback_response, rating, created_at) VALUES
+(1, 'Great service, very satisfied!', 2, '2025-04-02 18:01:04'),
+(4, 'It was okay, but theres room for improvement.', 5, '2025-04-27 18:01:04'),
+(9, 'The experience was excellent.', 4, '2025-03-30 18:01:04'),
+(10, 'Not satisfied, would not recommend.', 3, '2025-04-08 18:01:04'),
+(13, 'Good, but had some minor issues.', 2, '2025-04-13 18:01:04'),
+(16, 'The experience was excellent.', 3, '2025-04-05 18:01:04'),
+(20, 'Great service, very satisfied!', 2, '2025-04-12 18:01:04'),
+(22, 'Good, but had some minor issues.', 4, '2025-04-14 18:01:04'),
+(23, 'The experience was excellent.', 1, '2025-04-21 18:01:04'),
+(24, 'Not satisfied, would not recommend.', 3, '2025-04-03 18:01:04'),
+(25, 'The experience was excellent.', 4, '2025-04-07 18:01:04'),
+(26, 'Great service, very satisfied!', 4, '2025-03-31 18:01:04'),
+(27, 'Good, but had some minor issues.', 2, '2025-04-09 18:01:04'),
+(28, 'Not satisfied, would not recommend.', 5, '2025-03-29 18:01:04'),
+(29, 'Good, but had some minor issues.', 1, '2025-04-06 18:01:04'),
+(31, 'Not satisfied, would not recommend.', 5, '2025-03-29 18:01:04'),
+(32, 'Not satisfied, would not recommend.', 1, '2025-04-14 18:01:04'),
+(49, 'It was okay, but theres room for improvement.', 1, '2025-04-13 18:01:04'),
+(56, 'Great service, very satisfied!', 4, '2025-04-24 18:01:04'),
+(57, 'The experience was excellent.', 2, '2025-04-08 18:01:04'),
+(60, 'Great service, very satisfied!', 3, '2025-04-21 18:01:04'),
+(61, 'The experience was excellent.', 2, '2025-04-18 18:01:04'),
+(64, 'Great service, very satisfied!', 1, '2025-04-03 18:01:04'),
+(66, 'It was okay, but theres room for improvement.', 5, '2025-04-03 18:01:04'),
+(67, 'Not satisfied, would not recommend.', 5, '2025-04-24 18:01:04'),
+(67, 'Not satisfied, would not recommend.', 5, '2025-04-12 18:01:04'),
+(68, 'Good, but had some minor issues.', 4, '2025-03-30 18:01:04'),
+(76, 'The experience was excellent.', 1, '2025-04-01 18:01:04'),
+(78, 'Good, but had some minor issues.', 5, '2025-04-14 18:01:04'),
+(81, 'Great service, very satisfied!', 3, '2025-04-22 18:01:04'),
+(82, 'It was okay, but theres room for improvement.', 2, '2025-04-11 18:01:04'),
+(83, 'Not satisfied, would not recommend.', 1, '2025-04-07 18:01:04'),
+(84, 'Great service, very satisfied!', 2, '2025-03-25 18:01:04'),
+(85, 'It was okay, but theres room for improvement.', 5, '2025-04-16 18:01:04'),
+(86, 'The experience was excellent.', 4, '2025-04-04 18:01:04'),
+(87, 'Not satisfied, would not recommend.', 1, '2025-04-13 18:01:04'),
+(88, 'Great service, very satisfied!', 3, '2025-04-19 18:01:04'),
+(89, 'Good, but had some minor issues.', 2, '2025-03-28 18:01:04'),
+(90, 'The experience was excellent.', 5, '2025-04-11 18:01:04'),
+(91, 'Good, but had some minor issues.', 3, '2025-04-14 18:01:04'),
+(92, 'It was okay, but theres room for improvement.', 1, '2025-04-22 18:01:04'),
+(93, 'The experience was excellent.', 2, '2025-04-03 18:01:04'),
+(94, 'Not satisfied, would not recommend.', 5, '2025-04-21 18:01:04'),
+(95, 'Great service, very satisfied!', 4, '2025-04-08 18:01:04'),
+(96, 'It was okay, but theres room for improvement.', 3, '2025-04-15 18:01:04'),
+(97, 'The experience was excellent.', 5, '2025-04-10 18:01:04'),
+(98, 'Great service, very satisfied!', 4, '2025-04-25 18:01:04'),
+(99, 'Not satisfied, would not recommend.', 3, '2025-03-26 18:01:04'),
+(100, 'Good, but had some minor issues.', 1, '2025-04-05 18:01:04'),
+(101, 'Not satisfied, would not recommend.', 4, '2025-04-13 18:01:04'),
+(102, 'Great service, very satisfied!', 5, '2025-03-30 18:01:04'),
+(103, 'Good, but had some minor issues.', 4, '2025-04-10 18:01:04'),
+(104, 'Not satisfied, would not recommend.', 2, '2025-04-14 18:01:04'),
+(105, 'The experience was excellent.', 5, '2025-04-22 18:01:04'),
+(106, 'It was okay, but theres room for improvement.', 2, '2025-04-02 18:01:04'),
+(107, 'Good, but had some minor issues.', 3, '2025-04-23 18:01:04'),
+(108, 'Great service, very satisfied!', 1, '2025-04-01 18:01:04'),
+(109, 'Not satisfied, would not recommend.', 5, '2025-04-18 18:01:04'),
+(110, 'The experience was excellent.', 4, '2025-04-06 18:01:04'),
+(111, 'Not satisfied, would not recommend.', 2, '2025-04-25 18:01:04'),
+(112, 'Great service, very satisfied!', 1, '2025-04-12 18:01:04'),
+(113, 'It was okay, but theres room for improvement.', 5, '2025-04-19 18:01:04'),
+(114, 'Good, but had some minor issues.', 3, '2025-04-04 18:01:04'),
+(115, 'Not satisfied, would not recommend.', 1, '2025-04-07 18:01:04'),
+(116, 'The experience was excellent.', 2, '2025-04-02 18:01:04'),
+(117, 'Great service, very satisfied!', 5, '2025-04-18 18:01:04'),
+(118, 'Good, but had some minor issues.', 4, '2025-04-10 18:01:04'),
+(119, 'It was okay, but theres room for improvement.', 2, '2025-04-16 18:01:04'),
+(120, 'Not satisfied, would not recommend.', 5, '2025-04-20 18:01:04'),
+(121, 'Good, but had some minor issues.', 3, '2025-03-29 18:01:04'),
+(122, 'The experience was excellent.', 4, '2025-04-11 18:01:04'),
+(123, 'Great service, very satisfied!', 3, '2025-04-06 18:01:04'),
+(124, 'It was okay, but theres room for improvement.', 1, '2025-04-24 18:01:04'),
+(125, 'Not satisfied, would not recommend.', 5, '2025-03-31 18:01:04'),
+(126, 'Good, but had some minor issues.', 2, '2025-04-09 18:01:04'),
+(127, 'The experience was excellent.', 3, '2025-04-22 18:01:04'),
+(128, 'Great service, very satisfied!', 4, '2025-04-07 18:01:04'),
+(129, 'It was okay, but theres room for improvement.', 2, '2025-04-13 18:01:04'),
+(130, 'The experience was excellent.', 5, '2025-04-15 18:01:04');
