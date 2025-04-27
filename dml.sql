@@ -448,46 +448,48 @@ INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VAL
 INSERT INTO payment (reservation_id, transaction_id, payment_method, amount) VALUES (80, 'TXN80', 'visa', 318);
 
 -- Insert Food Orders
-INSERT INTO food_order (reservation_id) VALUES (10);
-INSERT INTO food_order (reservation_id) VALUES (73);
-INSERT INTO food_order (reservation_id) VALUES (18);
-INSERT INTO food_order (reservation_id) VALUES (11);
-INSERT INTO food_order (reservation_id) VALUES (42);
-INSERT INTO food_order (reservation_id) VALUES (43);
-INSERT INTO food_order (reservation_id) VALUES (20);
-INSERT INTO food_order (reservation_id) VALUES (14);
-INSERT INTO food_order (reservation_id) VALUES (37);
-INSERT INTO food_order (reservation_id) VALUES (51);
-INSERT INTO food_order (reservation_id) VALUES (54);
-INSERT INTO food_order (reservation_id) VALUES (74);
-INSERT INTO food_order (reservation_id) VALUES (57);
-INSERT INTO food_order (reservation_id) VALUES (15);
-INSERT INTO food_order (reservation_id) VALUES (41);
-INSERT INTO food_order (reservation_id) VALUES (75);
-INSERT INTO food_order (reservation_id) VALUES (25);
-INSERT INTO food_order (reservation_id) VALUES (62);
-INSERT INTO food_order (reservation_id) VALUES (59);
-INSERT INTO food_order (reservation_id) VALUES (55);
-INSERT INTO food_order (reservation_id) VALUES (8);
-INSERT INTO food_order (reservation_id) VALUES (72);
-INSERT INTO food_order (reservation_id) VALUES (63);
-INSERT INTO food_order (reservation_id) VALUES (22);
-INSERT INTO food_order (reservation_id) VALUES (49);
-INSERT INTO food_order (reservation_id) VALUES (40);
-INSERT INTO food_order (reservation_id) VALUES (1);
-INSERT INTO food_order (reservation_id) VALUES (12);
-INSERT INTO food_order (reservation_id) VALUES (17);
-INSERT INTO food_order (reservation_id) VALUES (61);
-INSERT INTO food_order (reservation_id) VALUES (44);
-INSERT INTO food_order (reservation_id) VALUES (52);
-INSERT INTO food_order (reservation_id) VALUES (34);
-INSERT INTO food_order (reservation_id) VALUES (29);
-INSERT INTO food_order (reservation_id) VALUES (68);
-INSERT INTO food_order (reservation_id) VALUES (38);
-INSERT INTO food_order (reservation_id) VALUES (69);
-INSERT INTO food_order (reservation_id) VALUES (30);
-INSERT INTO food_order (reservation_id) VALUES (76);
-INSERT INTO food_order (reservation_id) VALUES (28);
+INSERT INTO food_order (reservation_id, order_details, amount, created_at) VALUES
+(10, 'Coffee Break', 28.50, '2024-01-15 08:23:12'),
+(73, 'Pizza Set', 42.75, '2024-03-22 19:45:30'),
+(18, 'Light Breakfast', 35.20, '2024-02-10 22:10:15'),
+(11, 'Premium Dinner Set', 78.90, '2024-01-20 20:15:45'),
+(42, 'Lunch Set A', 64.00, '2024-05-12 09:30:00'),
+(43, 'Mini Bar Refill', 22.50, '2024-05-14 13:20:18'),
+(20, 'Romantic Dinner', 125.00, '2024-02-28 21:00:00'),
+(14, 'Pasta Dinner', 18.75, '2024-01-25 10:45:33'),
+(37, 'Salad Lunch', 32.40, '2024-04-05 20:30:22'),
+(51, 'Anniversary Package', 24.90, '2024-06-20 08:15:10'),
+(54, 'Salad Dinner', 45.50, '2024-06-25 15:30:45'),
+(74, 'Coffee Break', 58.60, '2024-03-25 19:20:15'),
+(57, 'Pizza Set', 40.25, '2024-07-10 23:05:18'),
+(15, 'Light Breakfast', 27.30, '2024-01-30 09:00:00'),
+(41, 'Premium Dinner Set', 26.80, '2024-05-10 12:45:30'),
+(75, 'Lunch Set A', 95.00, '2024-03-26 20:00:00'),
+(25, 'Mini Bar Refill', 38.50, '2024-03-15 23:15:20'),
+(62, 'Romantic Dinner', 36.00, '2024-07-25 08:30:00'),
+(59, 'Pasta Dinner', 67.80, '2024-07-15 19:45:00'),
+(55, 'Salad Lunch', 52.40, '2024-06-28 23:30:15'),
+(8, 'Anniversary Package', 34.50, '2024-01-10 08:00:00'),
+(72, 'Salad Dinner', 21.90, '2024-03-20 13:00:00'),
+(63, 'Coffee Break', 89.50, '2024-07-28 20:30:00'),
+(22, 'Pizza Set', 18.75, '2024-03-01 18:30:00'),
+(49, 'Light Breakfast', 19.90, '2024-06-15 09:15:00'),
+(40, 'Premium Dinner Set', 24.50, '2024-05-05 21:30:00'),
+(1, 'Lunch Set A', 15.00, '2024-01-05 16:00:00'),
+(12, 'Mini Bar Refill', 23.40, '2024-01-22 14:30:00'),
+(17, 'Romantic Dinner', 45.60, '2024-02-05 19:00:00'),
+(61, 'Pasta Dinner', 16.75, '2024-07-20 08:45:00'),
+(44, 'Salad Lunch', 20.90, '2024-05-16 12:30:00'),
+(52, 'Anniversary Package', 102.50, '2024-06-22 20:15:00'),
+(34, 'Salad Dinner', 18.90, '2024-04-20 00:30:00'),
+(29, 'Coffee Break', 22.50, '2024-03-10 09:00:00'),
+(68, 'Pizza Set', 38.75, '2024-08-05 19:30:00'),
+(38, 'Light Breakfast', 28.90, '2024-04-10 20:00:00'),
+(69, 'Premium Dinner Set', 21.40, '2024-08-08 08:30:00'),
+(30, 'Lunch Set A', 32.50, '2024-03-18 13:15:00'),
+(76, 'Mini Bar Refill', 120.00, '2024-08-15 19:00:00'),
+(28, 'Romantic Dinner', 26.80, '2024-03-05 21:15:00');
+
 
 -- Insert Feedback
 INSERT INTO feedback (reservation_id, feedback_response, rating) VALUES (19, 'Very good stay!', 1);

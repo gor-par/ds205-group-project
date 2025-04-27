@@ -42,3 +42,141 @@ WHERE
     );
 
 
+-- 3. What food orders did the user make during their last stay?
+
+SELECT
+    u.user_id,
+    u.first_name,
+    u.last_name,
+    fo.order_id,
+    fo.order_details,
+    fo.amount
+FROM "user" u
+JOIN reservation r on u.user_id = r.user_id
+JOIN food_order fo on r.reservation_id = fo.reservation_id
+WHERE r.check_in_date = (
+    SELECT MAX(r2.check_in_date)
+    FROM reservation r2
+    WHERE r2.user_id = u.user_id
+)
+ORDER BY u.user_id, fo.order_id;
+
+-- 4. What rooms are currently occupied or reserved today?
+
+SELECT DISTINCT orr.room_id, ovr.room_number, 'overnight' AS room_category
+FROM overnight_room_reservation orr
+JOIN reservation r ON orr.reservation_id = r.reservation_id
+JOIN overnight_room ovr ON orr.room_id = ovr.room_id
+WHERE current_date BETWEEN r.check_in_date::date AND r.check_out_date::date
+
+UNION
+
+SELECT DISTINCT mrr.room_id, mr.room_number, 'meeting' AS room_category
+FROM meeting_room_reservation mrr
+JOIN reservation r ON mrr.reservation_id = r.reservation_id
+JOIN meeting_room mr ON mrr.room_id = mr.room_id
+WHERE current_date BETWEEN r.check_in_date::date AND r.check_out_date::date;
+
+-- 5. Get all active room service food orders.
+
+SELECT fo.*
+FROM food_order fo
+JOIN reservation r ON fo.reservation_id = r.reservation_id
+WHERE current_date BETWEEN r.check_in_date::date AND r.check_out_date::date;
+
+-- 6. Show top 5 most ordered food items this month.
+SELECT order_details, COUNT(*) AS times_ordered
+FROM food_order
+WHERE date_trunc('month', created_at) = date_trunc('month', now())
+GROUP BY order_details
+ORDER BY times_ordered DESC
+limit 5;
+
+-- 8. List all rooms in a branch and their availability.
+
+SELECT 
+    ovr.room_number, 
+    ovr.hotel_id,
+    h.name AS hotel_name,
+    CASE 
+        WHEN EXISTS (
+            SELECT 1 
+            FROM overnight_room_reservation orr
+            JOIN reservation r ON orr.reservation_id = r.reservation_id
+            WHERE orr.room_id = ovr.room_id
+              AND CURRENT_DATE BETWEEN r.check_in_date::date AND r.check_out_date::date
+              AND r.status = 'reserved'
+        ) THEN 'RESERVED'
+        ELSE 'AVAILABLE'
+    END AS status
+FROM 
+    overnight_room ovr
+JOIN 
+    hotel h ON ovr.hotel_id = h.hotel_id
+WHERE 
+    h.hotel_id IN (1, 2, 3, 4, 5)
+ORDER BY 
+    h.hotel_id;
+
+-- 9. Get a reservation’s full details, including user and payment info
+
+SELECT r.*, u.first_name, u.last_name, u.email, p.amount as payment_amount, p.payment_method
+FROM reservation r
+JOIN "user" u ON r.user_id = u.user_id
+LEFT JOIN payment p ON r.reservation_id = p.reservation_id
+LIMIT 5;
+
+-- 10. View all reservations for a specific date range.
+SELECT *
+FROM reservation
+WHERE check_in_date::date BETWEEN '2024-01-01'::date AND '2024-01-31'::date
+OR check_out_date::date BETWEEN '2024-06-01'::date AND '2024-07-31'::date;
+
+
+-- 11. Show all reservations made for a branch within a given time period
+SELECT r.*
+FROM reservation r
+JOIN overnight_room_reservation orr ON r.reservation_id = orr.reservation_id
+JOIN overnight_room ovr ON orr.room_id = ovr.room_id
+WHERE ovr.hotel_id IN (1, 2, 3, 4, 5)
+  AND (r. check_in_date::date BETWEEN '2024-01-01'::date AND '2024-01-31'::date
+OR r.check_out_date::date BETWEEN '2024-06-01'::date AND '2024-07-31'::date);
+
+-- 12. Show all employees and their assigned branches
+
+SELECT e.user_id, u.first_name, u.last_name, e.role, h.name AS hotel_name
+FROM employee_details e
+JOIN "user" u ON e.user_id = u.user_id
+JOIN hotel h ON e.hotel_id = h.hotel_id;
+
+-- 13. Monthly revenue report (rooms and food)
+
+SELECT
+    date_trunc('month', p.created_at) AS month,
+    'room' AS service_type,
+    SUM(p.amount) AS total_amount
+FROM payment p
+GROUP BY month
+
+UNION ALL
+
+SELECT
+    date_trunc('month', fo.created_at) AS month,
+    'food' AS service_type,
+    SUM(fo.amount) AS total_amount
+FROM food_order fo
+GROUP BY month
+ORDER BY month;
+
+-- 14. Revenue by room type per month (last year)
+
+SELECT
+    date_trunc('month', r.created_at) AS month,
+    ovr.room_type,
+    SUM(r.total_cost) AS total_revenue
+FROM reservation r
+JOIN overnight_room_reservation orr ON r.reservation_id = orr.reservation_id
+JOIN overnight_room ovr ON orr.room_id = ovr.room_id
+WHERE r.created_at >= date_trunc('year', now()) - interval '1 year'
+GROUP BY month, ovr.room_type
+order by month, ovr.room_type;
