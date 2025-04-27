@@ -66,8 +66,6 @@ ORDER BY
     total_food_bill DESC;
 
 
-Գոռ կարաս դու քոնի հետ դրանք էլ DQL ավելացնես ու նոր pushանե՞ս
-
 --Visitor-Focused Queries
 
 -- 1. View stay history, payments, and feedback
