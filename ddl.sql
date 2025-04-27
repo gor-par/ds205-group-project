@@ -48,8 +48,6 @@ create table hotel ( -- same as branch I guess
     hotel_id serial primary key,
     name varchar(100) not null unique,
     hotel_address address,
-    room_quantity int not null,
-    capacity int not null,
     branch_manager_id int references "user"(user_id)
 );
 
